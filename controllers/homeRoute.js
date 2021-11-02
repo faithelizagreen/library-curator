@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
   Reader.findAll({
-    attributes: ['id', 'name'], 
+    attributes: ['id', 'first_name','last_name'], 
   });
 
   res.send('Need home in views to render for later');
