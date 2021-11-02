@@ -35,13 +35,13 @@ Book.init(
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-    // reader_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'reader',
-    //     key: 'id',
-    //   },
-    // },
+    reader_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'reader',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
