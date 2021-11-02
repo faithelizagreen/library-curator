@@ -59,7 +59,7 @@ app.use(routes);
 //-----------------------------------------------------------------------------
 // Turns PORT into a server and syncs Database specified from .env file.
 //-----------------------------------------------------------------------------
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false, logging: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}`));
   });
 
