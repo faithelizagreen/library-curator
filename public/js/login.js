@@ -1,13 +1,13 @@
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
-    const libraryCard = document.querySelector('#user-login').value.trim();
+    const userID = document.querySelector('#user-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
-    if (libraryCard && password) {
+    if (userID && password) {
       const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({ libraryCard, password }),
+        body: JSON.stringify({ userID, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
