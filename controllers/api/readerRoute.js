@@ -5,7 +5,7 @@ const {Reader, Book, LibraryCard} = require("../../models")
 
 router.get('/', (req, res) => {
     Reader.findAll({
-      attributes: ['id', 'name','email], 
+      attributes: ['id', 'firstname','lastname','email'], 
       
       include: 
       [{model:Book, attributes:['title','author','id','pages] }]
