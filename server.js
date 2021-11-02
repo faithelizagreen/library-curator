@@ -2,7 +2,10 @@
 const express = require('express');
 const path = require('path')
 const sequelize = require('./config/connection');
-
+//-------------------------
+// Router path file
+//-------------------------
+const routes = require('./controllers')
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -24,6 +27,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: 'secret phrase',
   cookie: {maxAge: 600000}, // Cookie lasts for 10 mins before it is deleted.
+  resave: true,             // Saves session to store  marking it active.
   rolling: true,            // Reset the cookie maxAge every time user makes new requests(User won't have to relog after 10mins if they are active on the site)
   saveUninitialized: true,  // Keep track of recurring users.
   store: new SequelizeStore({
@@ -43,10 +47,8 @@ app.use(session(sess))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-//-------------------------
-// Router path file
-//-------------------------
-const routes = require('./controllers');
+
+
 //----------------------------------------------
 // Call handlebars to be used as the view engine
 //----------------------------------------------
