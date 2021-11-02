@@ -14,7 +14,30 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/:id', (req,res) => {
+    Reader.findOne({
+        where:{
+            id: req.params.id
+        }
+    }).then((bookData) => res.json(bookData))
+    
+    .catch((err) =>{
+        res.status(500).res.json(err)
+    })
+})
 
+router.post('/new', (req,res) => {
+    Reader.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email : req.body.email,
+        password: req.body.password,
+        is_admin: req.body.admin
+    }).then((readerData) => res.json(readerData))       
+     .catch((err) => {
+        res.status(500).json(err)
+    })
+})
 
 
 
