@@ -2,11 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Reader extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
+class Reader extends Model {}
 
 Reader.init(
   {
@@ -16,15 +12,14 @@ Reader.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    firstname: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastname: {
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-      
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,26 +32,41 @@ Reader.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: [1],
       },
+    },
+    is_admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+      beforeCreate: async (newReader) => {
+        try {
+          newReader.password = await bcrypt.hash(newReader.password, 10);
+          return newReader;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
+      beforeUpdate: async (updatedReader) => {
+        try {
+          updatedReader.password = await bcrypt.hash(updatedReader.password, 10);
+          return updatedReader;
+        } catch (err) {
+          console.log(err);
+          return err;
+        }
       },
     },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'reader',
   }
 );
 
