@@ -1,11 +1,12 @@
 const addBookLibraryDB = async (event) => {
-    
+
     event.preventDefault();
 
     const googleKey = AIzaSyArrMjqUSxtIDaXs97e6AAynyVPSaJO0ao;
     const googleBooks = "https://www.googleapis.com/books/v1/volumes?q=react&key=" + googleKey
+    const bookInput = document.querySelector('#book-input')
 
-    if(googleBooks) {
+    if(bookInput && googleBooks) {
 
     const response = await fetch( googleBooks, {
         method: "GET",
