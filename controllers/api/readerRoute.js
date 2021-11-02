@@ -5,10 +5,12 @@ const {Reader, Book, LibraryCard} = require("../../models")
 
 router.get('/', (req, res) => {
     Reader.findAll({
-      attributes: ['id', 'first_name','last_name','email'], 
+      attributes: ['id', 'first_name','last_name','email'],
+      
 
       include: 
-      [{model:Book, attributes:['title','author','id','pages'] }]
+      [{model:Book, attributes:['title','author','id','pages']}],
+       group: ['reader_id']
     }).then((readerData) => res.json(readerData)).catch(err => {
         res.status(500).json(err)
     })
@@ -16,9 +18,12 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req,res) => {
     Reader.findOne({
+        attributes: {exclude:['is_admin']},
         where:{
             id: req.params.id
-        }
+        },include: 
+        [{model:Book, attributes:['title','author','id','pages']}],
+         group: ['reader_id']
     }).then((bookData) => res.json(bookData))
     
     .catch((err) =>{
