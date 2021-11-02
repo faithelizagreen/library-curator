@@ -1,30 +1,12 @@
 [
-  {
-    "first_name": "Sal",
-    "last_name": "Human",
-    "email": "sal@hotmail.com",
-    "password": "password1234",
-    "is_admin": false
-  },
-  {
-    "first_name": "Lernantino",
-    "last_name": "Person",
+    {
+    "name":"bob",
+    "email":"bob@mail.com",
+    "password": "seven"
+    },
+    {
+    "name": "Lernantino",
     "email": "lernantino@gmail.com",
-    "password": "coolPw2020",
-    "is_admin": false
-  },
-  {
-    "first_name": "Amiko",
-    "last_name": "People",
-    "email": "amiko2k20@aol.com",
-    "password": "amiko2k20!",
-    "is_admin": false
-  },
-  {
-    "first_name": "Library",
-    "last_name": "Owner",
-    "email": "library@mylibrary.com",
-    "password": "adminpassword1!",
-    "is_admin": true
-  }
+    "password": "coolPw2020"
+    }
 ]

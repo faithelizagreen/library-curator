@@ -14,9 +14,9 @@ const hbs = exphbs.create({
   defaultLayout: 'main',
   partialsDir: 'views/partials/'
 });
-//==============================================
-//express-session configs for user on connection
-//==============================================
+//====================================
+//Creates session configs for users
+//===================================
 const session = require('express-session')
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -24,6 +24,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: 'secret phrase',
   cookie: {maxAge: 600000}, // Cookie lasts for 10 mins before it is deleted.
+  resave: true,             // Saves the session to store
   rolling: true,            // Reset the cookie maxAge every time user makes new requests(User won't have to relog after 10mins if they are active on the site)
   saveUninitialized: true,  // Keep track of recurring users.
   store: new SequelizeStore({
