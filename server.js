@@ -14,9 +14,9 @@ const hbs = exphbs.create({
   defaultLayout: 'main',
   partialsDir: 'views/partials/'
 });
-//================================
-//
-//================================
+//====================================
+//Creates session configs for users
+//===================================
 const session = require('express-session')
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
