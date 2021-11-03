@@ -5,18 +5,17 @@ const Op = Sequelize.Op
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 router.post('/', async (req, res) => {
     const searchFields = req.body.search
    
     try{
-        const books = await Book.findAll({
+        const booksData = await Book.findAll({
             where: { title: {[Op.like]: [`%${searchFields}%`]}},
             logging: false
         });
+
+        const books = booksData.map((book) => book.get({ plain: true }));
 
         res.render('results', {books});
     }   
