@@ -10,8 +10,8 @@ const Op = Sequelize.Op
 =======
 >>>>>>> main
 router.post('/', async (req, res) => {
-    searchFields = req.body.search
-    
+    const searchFields = req.body.search
+   
     try{
         const books = await Book.findAll({
             where: { title: {[Op.like]: [`%${searchFields}%`]}},

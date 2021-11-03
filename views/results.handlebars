@@ -1,0 +1,23 @@
+<!-- Loop over each object in the projects array -->
+{{#each books as |book| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      {{book.title}}
+    </h2>
+    <p>
+        Author: {{book.author}}
+    </p>
+    {{#if book.reader_id}}
+    Currently not available.
+    {{else}}
+    Available to borrow.
+    {{/if}}
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{book.subject}}
+    </p>
+  </div>
+</div>
+{{/each}}
