@@ -20,12 +20,12 @@ const seedDatabase = async () => {
         }
     }
 
-//   for (const book of bookSeedData) {
-//     const newBook = await Book.create({
-//       ...book,
-//       reader_id: readers[Math.floor(Math.random() * readers.length)].id,
-//     });
-//   }
+  for (const book of bookSeedData) {
+    const newBook = await Book.create({
+      ...book,
+      reader_id: readers[Math.floor(Math.random() * readers.length)].id,
+    });
+  }
 
     try{
         const books = await Book.bulkCreate(bookSeedData, {

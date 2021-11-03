@@ -26,7 +26,8 @@ router.get('/:id', (req,res) => {
     Book.findOne({
         where:{
             id: req.params.id,
-        }
+        },include:[{model:Reader, attributes:['first_name','last_name','email','id']}],
+        group: ['reader_id']
     }).then((bookData) => res.json(bookData))
     .catch((err) =>{
         res.status(500).res.json(err)
