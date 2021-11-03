@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     attributes: ['id', 'first_name','last_name'], 
   });
 
-  res.send('Need home in views to render for later');
+  res.render('home');
 });
 
 module.exports = router;
