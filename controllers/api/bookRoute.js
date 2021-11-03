@@ -5,6 +5,10 @@ const Op = Sequelize.Op
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
 router.post('/', async (req, res) => {
     searchFields = req.body.search
     
