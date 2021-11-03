@@ -6,7 +6,7 @@ const Op = Sequelize.Op
 
 
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
     searchFields = req.body.search
     
     try{
@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
             where: { title: {[Op.like]: [`%${searchFields}%`]}},
             logging: false
         });
-        res.send(books);
+
+        res.render('results', {books});
     }   
     catch{
         console.log("error");
