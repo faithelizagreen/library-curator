@@ -1,13 +1,13 @@
-const addBookLibraryDB = async (event) => {
+const externalBookSearch = async (event) => {
 
     event.preventDefault();
 
     const googleKey = "AIzaSyArrMjqUSxtIDaXs97e6AAynyVPSaJO0ao";
-    const bookTitle= "";
-    const googleBooks = `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=${googleKey}`;
-    const bookInput = document.querySelector("#book-input")
+    const bookInput = document.querySelector("#book-input");
+    const googleBooks = `https://www.googleapis.com/books/v1/volumes?q=${bookInput}&key=${googleKey}`;
+    
 
-    if(bookInput && googleBooks) {
+    if(googleBooks) {
 
     const response = await fetch( googleBooks, {
         method: "GET",
@@ -23,7 +23,7 @@ const addBookLibraryDB = async (event) => {
 };
 
 document
-  .querySelector(".add-book-form")
-  .addEventListener('search', addBookLibraryDB);
+  .querySelector(".external-book-form")
+  .addEventListener('search', externalBookSearch);
 
 
