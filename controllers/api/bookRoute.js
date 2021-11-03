@@ -5,7 +5,10 @@ const Op = Sequelize.Op
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 router.post('/', async (req, res) => {
     searchFields = req.body.search
     
@@ -22,6 +25,8 @@ router.post('/', async (req, res) => {
     }
   
 });
+
+
 
 router.get('/:id', (req,res) => {
     Book.findOne({
