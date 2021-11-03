@@ -6,8 +6,8 @@ const Op = Sequelize.Op
 
 
 
-router.get('/', async (req, res) => {
-    searchFields = req.body.search
+router.post('/', async (req, res) => {
+    const searchFields = req.body.search
     
     try{
         const books = await Book.findAll({
