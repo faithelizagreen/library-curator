@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
       attributes: ['id', 'first_name', 'last_name', 'email'],
     },
   })
-    .then((CardData) => res.json(CardData))
+    .then((cardData) => res.json(cardData))
     .catch((err) => {
       res.status(500).json(err);
     });
