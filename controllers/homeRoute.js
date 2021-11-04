@@ -1,15 +1,32 @@
+
 const Sequelize = require('sequelize');
-const { Book, Reader } = require('../models');
+const { Book, Reader, Events } = require('../models');
+
 const router = require('express').Router();
 const Op = Sequelize.Op
 
 
-router.get('/', (req, res) => {
-  Reader.findAll({
-    attributes: ['id', 'first_name','last_name'], 
-  });
-  res.render('home',{loggedin: true, admin: true});
-});
+router.get('/', async (req, res) => {
+  try{
+    const eventsData = await Events.findAll({
+        attributes:['id','title','created_at','description'],
+        limit:3,
+        order:[['created_at','DESC']]
+        
+
+    });
+
+    const events = eventsData.map((eventData) => eventData.get({ plain: true }));
+    res.render('home', { events,loggedin: true, admin: true} );
+}   
+catch{
+    console.log("error");
+}
+})
+  
+
+
+  
 
 router.get('/search/:term', async (req, res, next) => {
   const searchFields = req.params.term

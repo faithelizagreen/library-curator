@@ -12,11 +12,13 @@ const app = express();
 //------------------------------------
 // Handlebars path to the views files.
 //------------------------------------
+
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({
   defaultLayout: 'main',
   partialsDir: 'views/partials/'
 });
+
 //==============================================
 //express-session configs for user on connection
 //==============================================

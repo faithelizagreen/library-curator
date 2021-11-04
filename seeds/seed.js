@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { Book, Reader, LibraryCard } = require('../models');
+const { Book, Reader, LibraryCard,Events } = require('../models');
 
 const readerSeedData = require('./readerSeedData.json');
 const bookSeedData = require('./bookSeedData.json');
+const eventSeedData = require('./eventSeedData.json')
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
@@ -11,6 +12,12 @@ const seedDatabase = async () => {
         individualHooks: true,
         returning: true,
     });
+    const events = await Events.bulkCreate(eventSeedData , {
+      individualHooks: true,
+    })
+
+
+
 
     for (const { id, is_admin } of readers) {
         if(!is_admin){
