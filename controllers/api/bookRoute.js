@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const { Book,Reader } = require('../../models');
 const router = require('express').Router();
 const Op = Sequelize.Op
-
+const { v4: uuidv4 } = require('uuid');
 
 
 
@@ -39,6 +39,35 @@ router.get('/:id', (req,res) => {
     })
 })
 
+router.post('/addbook', async (req,res) => {
+   await Book.create({
+        title: req.body.title,
+        author: req.body.author,
+        pages: req.body.pages,
+        isbn: req.body.isbn,
+        paperback : req.body.paperback ? true:false,
+        subject: req.body.subject 
+
+
+    }).then((addBookData) => {
+        res.status(200).json(addBookData)
+
+    }).catch((err) => {
+        res.status(500).json(err)
+
+    })
+})
+
+router.delete('/:id',async(req,res) => {
+    Book.destroy({
+        where:{
+            id: req.params.id,
+        }
+    }).then((bookData) => res.send('Book with this id has been removed from DB'))
+    .catch((err) =>{
+        res.status(500).res.json(err)
+    })
+})
 
 
 
