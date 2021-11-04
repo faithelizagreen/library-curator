@@ -1,6 +1,6 @@
 
 const Sequelize = require('sequelize');
-const { Book, Reader, Events } = require('../models');
+const { Book, Events } = require('../models');
 
 const router = require('express').Router();
 const Op = Sequelize.Op
@@ -65,6 +65,24 @@ router.get('/logout', (req, res) => {
   
 
 });
+
+router.get("/event",async (req,res) => {
+  try{
+    const eventsData = await Events.findAll({
+        attributes:['id','title','created_at','description'],
+        limit:3,
+        order:[['created_at','DESC']]
+        
+
+    });
+
+    const events = eventsData.map((eventData) => eventData.get({ plain: true }));
+    res.render('eventPage', { events,loggedin: true, admin: true} );
+}   
+catch{
+    console.log("error");
+}
+})
 
 
 module.exports = router;
