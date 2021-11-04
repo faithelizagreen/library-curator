@@ -6,8 +6,7 @@ router.get('/', (req, res) => {
   Reader.findAll({
     attributes: ['id', 'first_name','last_name'], 
   });
-
-  res.render('home',{loggedin: req.session.logged_in});
+  res.render('home',{loggedin: true, admin: true});
 });
 
 module.exports = router;
