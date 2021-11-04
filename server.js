@@ -27,7 +27,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: 'secret phrase',
   cookie: {maxAge: 600000}, // Cookie lasts for 10 mins before it is deleted.
-  resave: true,             // Saves session to store  marking it active.
+  resave: true,             // Saves session to library  marking it active.
   rolling: true,            // Reset the cookie maxAge every time user makes new requests(User won't have to relog after 10mins if they are active on the site)
   saveUninitialized: true,  // Keep track of recurring users.
   store: new SequelizeStore({
