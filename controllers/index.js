@@ -4,6 +4,7 @@ const homeRoute = require ("./homeRoute")
 const profileRoutes = require("./readerProfile")
 
 
+
 router.use("/", homeRoute)
 router.use("/api", apiRoutes);
 router.use("/profile", profileRoutes);
