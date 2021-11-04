@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     attributes: ['id', 'first_name','last_name'], 
   });
 
-  res.render('home');
+  res.render('home',{loggedin: req.session.logged_in});
 });
 
 module.exports = router;

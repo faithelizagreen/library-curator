@@ -20,7 +20,8 @@ const hbs = exphbs.create({
 //==============================================
 //express-session configs for user on connection
 //==============================================
-const session = require('express-session')
+const session = require('express-session');
+
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -33,9 +34,16 @@ const sess = {
   store: new SequelizeStore({
     db: sequelize
   })
+  
+  
 };
 
-app.use(session(sess))
+app.use(session(sess));
+app.use(function(req, res, next){
+  res.locals.login = req.session.logged_in;
+  res.locals.admin = req.session.isAdmin
+  next();
+  });
 
 
 

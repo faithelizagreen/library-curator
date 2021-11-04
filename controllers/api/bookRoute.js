@@ -5,22 +5,26 @@ const Op = Sequelize.Op
 
 
 
-
-router.get('/', async (req, res) => {
-    searchFields = req.body.search
-    
+router.post('/', async (req, res) => {
+    const searchFields = req.body.search
+   
     try{
-        const books = await Book.findAll({
+        const booksData = await Book.findAll({
             where: { title: {[Op.like]: [`%${searchFields}%`]}},
             logging: false
         });
-        res.send(books);
+
+        const books = booksData.map((book) => book.get({ plain: true }));
+
+        res.render('results', {books});
     }   
     catch{
         console.log("error");
     }
   
 });
+
+
 
 router.get('/:id', (req,res) => {
     Book.findOne({
@@ -34,6 +38,35 @@ router.get('/:id', (req,res) => {
     })
 })
 
+router.post('/addbook', async (req,res) => {
+   await Book.create({
+        title: req.body.title,
+        author: req.body.author,
+        pages: req.body.pages,
+        isbn: req.body.isbn,
+        paperback : req.body.paperback ? true:false,
+        subject: req.body.subject 
+
+
+    }).then((addBookData) => {
+        res.status(200).json(addBookData)
+
+    }).catch((err) => {
+        res.status(500).json(err)
+
+    })
+})
+
+router.delete('/:id',async(req,res) => {
+    Book.destroy({
+        where:{
+            id: req.params.id,
+        }
+    }).then((bookData) => res.send('Book with this id has been removed from DB'))
+    .catch((err) =>{
+        res.status(500).res.json(err)
+    })
+})
 
 
 
