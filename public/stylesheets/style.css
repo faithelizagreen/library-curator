@@ -1,0 +1,54 @@
+.nav .nav-item .nav-link {
+    color: white;
+    margin-top: 4px;
+}
+
+.nav .nav-item .nav-link:hover {
+    color: #44B4FF;
+    transition: 0.3s;
+}
+
+.nav .nav-item .nav-link:focus {
+    color: #44B4FF;
+    font-weight: bolder;
+}
+
+#nav-logo {
+    height: 75px;
+}
+
+.login-card{
+    width: 360px;
+    height: 500px;
+    
+    border-radius: 3px;
+    background-color: rgb(196, 190, 190);
+    margin-top: 200px;
+}
+
+.login-title{
+    text-align: center;
+    padding-top: 15px;
+}
+
+.event-title{
+    padding-top: 15px;
+}
+
+
+
+form{
+    width: 300px;
+    margin-left: 20px;
+}
+
+form label{
+    text-align:center;
+}
+form input{
+    text-align: center;
+}
+
+.footer {
+    background-color: rgb(12, 14, 28); 
+}
