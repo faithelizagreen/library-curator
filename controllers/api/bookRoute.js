@@ -4,26 +4,26 @@ const router = require('express').Router();
 const Op = Sequelize.Op
 
 
+// router.get('/search/:term', async (req, res) => {
+//   const searchFields = req.params.term
+//   req.session.logged_in = true
+//   try{
+//       const booksData = await Book.findAll({
+//           where: { title: {[Op.like]: [`%${searchFields}%`]}},
+//           logging: false
+//       });
 
+//       const books = booksData.map((book) => book.get({ plain: true }));
 
-router.post('/', async (req, res) => {
-    const searchFields = req.body.search
-   
-    try{
-        const booksData = await Book.findAll({
-            where: { title: {[Op.like]: [`%${searchFields}%`]}},
-            logging: false
-        });
+//       res.render('search', {books, logged_in: req.session.logged_in})
+//   }   
+//   catch{
+//       console.log("error");
+//   }
 
-        const books = booksData.map((book) => book.get({ plain: true }));
-
-        res.render('results', {books});
-    }   
-    catch{
-        console.log("error");
-    }
   
-});
+// });
+
 
 
 

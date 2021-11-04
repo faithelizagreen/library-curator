@@ -1,6 +1,18 @@
 const Reader = require('./Reader');
 const Book = require('./Book');
 const LibraryCard = require('./LibraryCard');
+const Favorite = require('./Favorite')
+
+Reader.belongsToMany(Book,{
+    through: Favorite,
+    foreignKey: 'reader_id'
+});
+Book.belongsToMany(Reader,{
+    through: Favorite,
+    foreignKey: 'book_id'
+});
+
+
 
 Reader.hasOne(LibraryCard, {
     foreignKey: 'reader_id',
