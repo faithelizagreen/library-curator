@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     });
 
     const events = eventsData.map((eventData) => eventData.get({ plain: true }));
-    res.render('home', { events,loggedin: true, admin: true} );
+    res.render('home', { events, logged_in: req.session.logged_in, admin: req.session.isAdmin} );
 }   
 catch{
     console.log("error");
@@ -52,6 +52,19 @@ function (req, res){
 }
 );
 
+router.get('/logout', (req, res) => {
+
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(200).end()
+    });
+  }else{
+    res.status(404).end()
+  }
+
+  
+
+});
 
 router.get("/event",async (req,res) => {
   try{
