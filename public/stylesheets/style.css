@@ -1,3 +1,16 @@
+#left{
+    background-color: black;
+}
+
+#right{
+    background-color: blue;
+}
+
+#small-box{
+    height: 720px;
+    overflow-x: scroll;
+}
+
 .nav .nav-item .nav-link {
     color: white;
     margin-top: 4px;
@@ -20,7 +33,6 @@
 .login-card{
     width: 360px;
     height: 500px;
-    
     border-radius: 3px;
     background-color: rgb(196, 190, 190);
     margin-top: 200px;
