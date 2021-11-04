@@ -19,10 +19,6 @@ Events.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  createdAt: { 
-      type: DataTypes.DATE, 
-      field: 'created_at' 
-    }
 },
 {
     sequelize,
