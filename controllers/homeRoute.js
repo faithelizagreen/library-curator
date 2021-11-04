@@ -1,12 +1,27 @@
-const { Reader } = require('../models');
+const { Events } = require('../models');
 
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
-  Reader.findAll({
-    attributes: ['id', 'first_name','last_name'], 
-  });
-  res.render('home',{loggedin: true, admin: true});
-});
+router.get('/', async (req, res) => {
+  try{
+    const eventsData = await Events.findAll({
+        attributes:['id','title','created_at','description'],
+        limit:3,
+        order:[['created_at','DESC']]
+        
+
+    });
+
+    const events = eventsData.map((eventData) => eventData.get({ plain: true }));
+    res.render('home', { events,loggedin: true, admin: true} );
+}   
+catch{
+    console.log("error");
+}
+})
+  
+
+
+  
 
 module.exports = router;
