@@ -14,6 +14,13 @@
   <div class="container-fluid">
     <div class="navbar-header col-1">
      <a class="navbar-brand text-light" style="font-size:25px;" href="/">Library Curator</a>
+    {{#if admin}}
+    <a class="text-white"href="/">Home</a>
+    {{/if}}
+    {{#if session}}
+    <a  class="text-white" href="">not admin</a>
+    {{/if}}
+ 
     </div>
     <div class="w-50">
       <ul class="nav navbar-nav navbar-right">

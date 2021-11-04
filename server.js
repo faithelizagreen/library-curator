@@ -20,22 +20,30 @@ const hbs = exphbs.create({
 //==============================================
 //express-session configs for user on connection
 //==============================================
-const session = require('express-session')
+const session = require('express-session');
+
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
   secret: 'secret phrase',
-  cookie: {maxAge: 600000}, // Cookie lasts for 10 mins before it is deleted.
+  cookie: {maxAge: 6 * 100000}, // Cookie lasts for 10 mins before it is deleted.
   resave: true,             // Saves session to store  marking it active.
   rolling: true,            // Reset the cookie maxAge every time user makes new requests(User won't have to relog after 10mins if they are active on the site)
   saveUninitialized: true,  // Keep track of recurring users.
   store: new SequelizeStore({
     db: sequelize
   })
+  
+  
 };
 
-app.use(session(sess))
+app.use(session(sess));
+app.use(function(req, res, next){
+  res.locals.login = req.session.logged_in;
+  res.locals.admin = req.session.isAdmin
+  next();
+  });
 
 
 

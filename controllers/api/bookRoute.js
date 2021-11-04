@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 const { Book,Reader } = require('../../models');
 const router = require('express').Router();
 const Op = Sequelize.Op
-const { v4: uuidv4 } = require('uuid');
 
 
 
