@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
   Reader.findAll({
     attributes: ['id', 'first_name','last_name'], 
   });
-
-  res.render('home');
+  res.render('home',{loggedin: true, admin: true});
 });
 
 router.get('/search/:term', async (req, res, next) => {

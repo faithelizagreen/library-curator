@@ -74,7 +74,9 @@ router.post('/login', async (req, res) => {
             res.json({ message: 'Logged in as Librarian' });
         }else{
             req.session.isAdmin = false;
-            res.json({ message: 'You are now logged in!' });
+            res.json('You are now logged in!');
+
+            
         }
             
       });

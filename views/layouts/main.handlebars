@@ -9,30 +9,73 @@
     <link href="/favicon.ico" type="image/x-icon" rel="icon" />
     <title>Library Curator</title>
 </head>
-    <header>
-<nav class="navbar navbar-default bg-dark">
-  <div class="container-fluid">
-    <div class="navbar-header col-1">
-     <a class="navbar-brand text-light" style="font-size:25px;" href="/">Library Curator</a>
-    </div>
-    <div class="w-50">
-      <ul class="nav navbar-nav navbar-right">
-          <form class="form-inline search-form">
-         <input type="search" class="form-control rounded form-inline" id="searchInput" placeholder="Search any title here" aria-label="Search"
-  aria-describedby="search-addon"/>
-        </form>
-       
-      </ul>
-    </div>
-  </div>
-</nav>
-
+ <header>
+  <nav class="nav bg-black p-3 justify-content-between">
+            <ul class="nav">
+              <a class="navbar-brand text-light" style="font-size:25px;" href="/">Library Curator</a>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Events</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Books</a>
+                </li>
+                {{#if loggedin}}
+                   {{#if admin}}
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Users</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                  <a class="nav-link" href="#">My Account</a>
+                </li>{{/if}}
+                {{/if}}
+               
+              </ul>
+                 <form class="form-inline search-form w-50">
+                    <input type="search" class="form-control rounded form-inline" id="searchInput" placeholder="Search any title here" aria-label="Search"
+            aria-describedby="search-addon"/>
+                </form> 
+        </nav>
  </header>
-
-
 <body>
     {{{body}}}
 </body>
+   <footer class="footer w-100 py-4 flex-shrink-0">
+                <div id="footer-section" class="container py-4">
+                    <div class="row gy-4 gx-5">
+                        <div class="col-lg-4 col-md-6">
+                            <img id="footer-logo" src="">
+                            <p class="small text-muted mb-0"><br>&copy; Copyright 2021 Library Curator <br>All rights reserved.</p>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <h5 class="text-white mb-3">Quick links</h5>
+                            <ul class="list-unstyled text-muted">
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Events</a></li>
+                                <li><a href="#">Books</a></li>
+                                <li><a href="#">Homepage</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4">
+                            <h5 class="text-white mb-3">Contact Us</h5>
+                              <address class="small text-muted mb-0" >
+                                <strong>Phone</strong><br>
+                                (123) 456-7890<br>
+                              </address>
+
+                              <address class="small text-muted mb-0">
+                                <strong>Email</strong><br>
+                                <a href="mailto:#">help@library.com</a>
+                              </address>
+                          </div>  
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
 <script src="/js/SearchBox.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
