@@ -7,7 +7,7 @@ const searchFormHandler = async (event) => {
     console.log(bookTitle);
   
     if (bookTitle) {
-      location.href = '/search/' + bookTitle
+      location.href = `/search/${bookTitle}`
       // const response = await fetch(`/search/${bookTitle}`, {
       //   method: 'get',
       //   headers: { 'Content-Type': 'application/json' },
