@@ -1,5 +1,38 @@
-<div class="container">
+{{#each events as |event| }}
 
 
-    <h1>Events are where its at.</h1>
+
+
+<div class="card m-3" style="max-width: 900px">
+  <div class="row g-0">
+    <div class="col-md-4">
+
+      <img src="/images/poetry.jpeg" class="img-fluid rounded-start" alt="...">
+    </div>
+   
+    <div class="col-md-8 "> 
+  
+      
+    
+   
+      <div class="card-body m-4">
+        
+        <div class="container d-flex justify-content-end" id="events">
+       <button class="btn mt-2 mr-4" >Edit Event</button>
+       <button class="btn deleteEventBtn" id='{{id}}'><span style="font-size:10px; pointer-events:none" class="deleteEvent">&#10006;</span></button>
+        </div>  
+  
+        <h5 class="card-title">{{title}}</h5>
+        <form>
+        <p id="event_id" values=''></p>
+        </form>
+        <p class="card-text">{{description}}</p>
+        <p class="card-text"><small class="text-muted">{{created_at}}</small></p>
+        
+      </div>
+    </div>
+  </div>
 </div>
+{{/each}}
+
+<script src="/javascript/librarian/removeEvent.js"></script>
