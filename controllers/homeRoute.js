@@ -77,7 +77,7 @@ router.get("/event",async (req,res) => {
     });
 
     const events = eventsData.map((eventData) => eventData.get({ plain: true }));
-    res.render('eventPage', { events,loggedin: req.session.logged_in, admin: req.session.isAdmin} );
+    res.render('eventPage', { events,logged_in: req.session.logged_in, admin: req.session.isAdmin} );
 }   
 catch{
     console.log("error");

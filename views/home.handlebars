@@ -1,24 +1,25 @@
-
+{{!-- 
 {{#if logged_in}}
 <div class="container.fluid d-flex flex-column align-items-center">
 {{else}}
 <div class="container.fluid d-flex justify-content-between">
-{{/if}}
-  <div class="col">
-    <h2 class="m-3">Events</h2>
-    <div class="">{{>events}}</div>
+{{/if}} --}}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container.fluid d-flex flex-column align-items-center">
+    <form class="form-inline search-form w-100">
+      <input type="search" class="form-control rounded form-inline" id="searchInput" placeholder="Search any title here"
+        aria-label="Search" aria-describedby="search-addon" />
+    </form>
   </div>
-  {{#unless logged_in}}
-  <div class="row">
-    <div class="">{{>login}}</div>
-  </div> 
-  {{/unless}}
+</div>
+<div class="container.fluid d-flex flex-column align-items-center" id="events-container">
+  <h2 class="row m-3">Events</h2>
+  <div class="">{{>events}}</div>
 </div>
 
-
-</div class="container">
-  <div class="row">
-    <div class="">{{>books}}</div>
-  </div> 
+</div class="container.fluid d-flex flex-column align-items-center" id="books-container">
+<div class="row">
+  <div class="">{{>books}}</div>
 </div>
-
+</div>

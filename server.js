@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path')
 const sequelize = require('./config/connection');
+const helpers = require('./utils/helpers')
 //-------------------------
 // Router path file
 //-------------------------
@@ -16,7 +17,8 @@ const app = express();
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({
   defaultLayout: 'main',
-  partialsDir: 'views/partials/'
+  partialsDir: 'views/partials/',
+  helpers
 });
 
 //==============================================

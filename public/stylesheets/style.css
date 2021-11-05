@@ -1,28 +1,19 @@
-#left{
-    background-color: black;
+.nav {
+    background-color:rgb(35, 31, 51)
 }
-
-#right{
-    background-color: blue;
-}
-
-#small-box{
-    height: 720px;
-    overflow-x: scroll;
-}
-
 .nav .nav-item .nav-link {
     color: white;
     margin-top: 4px;
+    font-size: 15px;
 }
 
 .nav .nav-item .nav-link:hover {
-    color: #44B4FF;
+    color: #e7ad9c;
     transition: 0.3s;
 }
 
 .nav .nav-item .nav-link:focus {
-    color: #44B4FF;
+    color: #e7ad9c;
     font-weight: bolder;
 }
 
@@ -30,24 +21,36 @@
     height: 75px;
 }
 
-.login-card{
-    width: 360px;
-    height: 500px;
-    border-radius: 3px;
-    background-color: rgb(196, 190, 190);
-    margin-top: 200px;
-}
+.jumbotron {
+    background-image: url("../images/bookshelf.jpeg");
+    background-repeat: no-repeat;
+    background-position: 75% 25%;
+    background-size: cover;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.login-title{
-    text-align: center;
-    padding-top: 15px;
+#login-btn{
+  background-color: rgb(122, 119, 119);
+  border-color: rgb(122, 119, 119);
+  width: 80px;
 }
 
 .event-title{
     padding-top: 15px;
 }
 
+.date {
+    font-size: 21px;
+    text-align: center;
+    margin: 9px;
+}
 
+#events-container {
+    background-color:rgb(212, 169, 127)
+}
 
 form{
     width: 300px;
