@@ -1,3 +1,47 @@
+<div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add New Event</h5>
+        <button type="button" class="close btn btn-dark" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+        </button>
+      </div>
+      <form action="/api/events" method="post">
+          <div class="form-group">
+            <label for="eventTitle" class="col-form-label">Event Title:</label>
+            <input type="text" class="form-control" id="recipient-name" name="title">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Event Description:</label>
+            <textarea class="form-control" id="message-text" name="description"></textarea>
+          </div>
+          <div class="form-group">
+          <label class="form-label mt-2" for="customFile">Image for Event</label>
+          <input type="file" class="form-control" id="customFile" />
+          </div>
+        
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" value="submit" class="btn btn-dark">Create Event</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container.fluid d-flex justify-content-start  ">
+<button type='button' class="btn btn-dark w-50" data-toggle="modal" data-target="#addEvent">Add Event</button>
+</div>
+
 {{#each events as |event| }}
 
 
@@ -10,17 +54,17 @@
       <img src="/images/poetry.jpeg" class="img-fluid rounded-start" alt="...">
     </div>
    
-    <div class="col-md-8 "> 
+    <div class="col-md-8"> 
   
-      
+      <div class="container d-flex justify-content-end" id="events">
+       <button class="btn mt-2 mr-4" >Edit Event</button>
+       <button class="btn deleteEventBtn" id='{{id}}'><span style="font-size:10px; pointer-events:none" class="deleteEvent">&#10006;</span></button>
+        </div>  
     
    
       <div class="card-body m-4">
         
-        <div class="container d-flex justify-content-end" id="events">
-       <button class="btn mt-2 mr-4" >Edit Event</button>
-       <button class="btn deleteEventBtn" id='{{id}}'><span style="font-size:10px; pointer-events:none" class="deleteEvent">&#10006;</span></button>
-        </div>  
+        
   
         <h5 class="card-title">{{title}}</h5>
         <form>
@@ -36,3 +80,4 @@
 {{/each}}
 
 <script src="/javascript/librarian/removeEvent.js"></script>
+<script src="/javascript/librarian/addEvent.js"></script>

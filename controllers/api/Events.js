@@ -12,9 +12,9 @@ router.post('/', isAdmin, withAuth, async (req, res) => {
     title: req.body.title,
     description: req.body.description,
   })
-    .then((newEvent) => res.json(newEvent))
+    .then((newEvent) => res.redirect("/librarian/events"))
     .catch((err) => {
-      res.status(500).json(err);
+      res.status(500).json(err)
     });
 });
 
