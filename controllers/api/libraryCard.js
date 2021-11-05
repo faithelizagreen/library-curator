@@ -28,4 +28,29 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post('/check', async (req, res) => {
+  try{
+    const reader = await LibraryCard.findOne({
+      where: {
+        card_number: req.body.card,
+      },
+      include: [{
+        model: Reader,
+        attributes: ['first_name','last_name']
+      }]
+    })
+    console.log(reader);
+    if(reader){
+      res.status(200).json(reader)
+    }else{
+      res.status(500).end()
+    }
+
+
+  }
+  catch(err){
+
+  }
+});
+
 module.exports = router;

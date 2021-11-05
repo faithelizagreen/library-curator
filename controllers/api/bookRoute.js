@@ -23,6 +23,11 @@ router.get('/search/:term', async (req, res) => {
  });
 
 
+router.put("/out", (req,res) => {
+
+    
+
+})
 
 
 router.get('/:id', (req,res) => {
