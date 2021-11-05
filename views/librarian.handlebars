@@ -1,0 +1,93 @@
+  
+<div class="container mt-4 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-6"><h1 class="text-center ">Librarian Toolbelt</h1></div>
+    </div>
+
+  <div class="row justify-content-evenly">
+    <div class="col-3">
+      <a class="btn btn-outline-secondary" href="/librarian/checkout" role="button">Check IN/OUT Book</a>
+    </div>
+    <div class="col-3">
+      <a class="btn btn-outline-secondary" href="#" role="button">SEARCH/CREATE Library Card</a>
+    </div>
+    <div class="col-3">
+      <a class="btn btn-outline-secondary" href="#" role="button">Modify Events</a>
+    </div>
+    <div class="col-3">
+      <a class="btn btn-outline-secondary" href="#" role="button">Modify Books</a>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" style="background-color: #e3f2fd;">
+  <div class="container-fluid ">
+    <a class="navbar-brand" href="/librarian/">Librarian Toolbelt</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Borrow Book
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Check In</a></li>
+            <li><a class="dropdown-item" href="/librarian/checkout">Check Out</a></li>
+          </ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Library Cards
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/librarian/librarycard">Find/Search</a></li>
+            {{!-- <li><a class="dropdown-item" href="#">Create</a></li> --}}
+          </ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Events
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/librarian/events">Update/Add Event</a></li>
+            {{!-- <li><a class="dropdown-item" href="#">Remove Event</a></li>
+            <li><a class="dropdown-item" href="#">Add Event</a></li> --}}
+          </ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Books
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="/librarian/books">Update/Add Book</a></li>
+            {{!-- <li><a class="dropdown-item" href="#">Remove Book</a></li>
+            <li><a class="dropdown-item" href="#">Add Book</a></li> --}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container.fluid mb-4">
+
+{{#if checkout}}
+{{> checkout}}
+{{/if}}
+
+{{#if librarycard}}
+{{> librarycard}}
+{{/if}}
+
+{{#if books}}
+{{> modifybook}}
+{{/if}}
+
+{{#if events}}
+{{> modifyevent}}
+{{/if}}
+
+</div>
+
+
+
