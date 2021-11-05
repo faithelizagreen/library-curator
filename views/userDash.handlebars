@@ -1,0 +1,48 @@
+
+    <div class="p-4 m-4 d-flex flex-wrap justify-content-around">
+        <div class="mx-3 mb-5 card flex-fill" style="min-width: 300px;">
+            <h3 class="card-header">My Checked Out Titles</h3>
+            <div class="card-body">
+                {{#each checkedOutBooks as |checkedOutBook| }}
+                <div class="card m-4">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img src="{{image_url}}" class="img-fluid rounded-start bookcard-image" alt="placeholder image">
+                        </div>
+                        <div class="col-md-9 ps-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{title}}</h5>
+                                <p class="card-text">By: {{author}}</p>
+                                <p class="card-text">Return or renew before <span class="fw-bold">{{due_date}}</span>.</p>
+                                <a href="#" class="btn btn-primary">REQUEST RENEWAL</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}                
+            </div>
+        </div>
+
+        <div class="mx-3 mb-5 card flex-fill" style="min-width: 300px;">
+            <h3 class="card-header">My Wishlist</h3>
+            <div class="card-body">
+                {{#each favoritedBooks as |favoriteBooks| }}
+                <div class="card m-4">
+                    <div class="row g-0">
+                        <div class="col-md-3">
+                            <img src="{{image_url}}" class="img-fluid rounded-start bookcard-image" alt="placeholder image">
+                        </div>
+                        <div class="col-md-9 ps-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{title}}</h5>
+                                <p class="card-text">By:  {{author}}</p>
+                                <p class="card-text"><span class="fw-bold">{{#if reader_id}}NOT AVAILABLE{{else}}NOW AVAILABLE{{/if}}</span>.</p>
+                                <a href="#" class="btn btn-primary">REMOVE FROM FAVORITES</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}                               
+            </div>
+        </div>
+    </div> 
