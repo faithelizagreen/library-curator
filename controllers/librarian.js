@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const { Events } = require('../models');
 const router = require('express').Router();
 
 
@@ -34,10 +35,25 @@ router.get('/librarycard', async (req, res) => {
 });
 
 router.get('/events', async (req, res) => {
+  try{
+    const eventsData = await Events.findAll({
+        attributes:['id','title','created_at','description'],
+        order:[['created_at','DESC']]
+        
 
-    res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, events: true})
+    });
 
-});
+    const events = eventsData.map((eventData) => eventData.get({ plain: true }));
+    res.render('librarian',  {events,logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, modifyevent: true})
+}   
+catch(err){
+    console.log(err);
+}
+})
+
+    
+
+
 
 router.get('/books', async (req, res) => {
 
@@ -45,4 +61,4 @@ router.get('/books', async (req, res) => {
 
 });
 
-module.exports = router;
+module.exports = router

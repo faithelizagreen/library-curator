@@ -1,5 +1,5 @@
   
-<div class="container mt-4 mb-4">
+{{!-- <div class="container mt-4 mb-4">
     <div class="row justify-content-center">
         <div class="col-6"><h1 class="text-center ">Librarian Toolbelt</h1></div>
     </div>
@@ -18,7 +18,7 @@
       <a class="btn btn-outline-secondary" href="#" role="button">Modify Books</a>
     </div>
   </div>
-</div>
+</div> --}}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" style="background-color: #e3f2fd;">
   <div class="container-fluid ">
@@ -67,6 +67,12 @@
     </div>
   </div>
 </nav>
+<!-- cofirm delete modal for events -->
+
+
+
+
+
 
 
 <div class="container.fluid mb-4">
@@ -83,7 +89,8 @@
 {{> modifybook}}
 {{/if}}
 
-{{#if events}}
+{{#if modifyevent}}
+  
 {{> modifyevent}}
 {{/if}}
 
