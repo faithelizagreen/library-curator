@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 .nav {
     background-color:rgb(35, 31, 51)
 }
@@ -209,7 +208,6 @@ margin-top: 10px
 #bookCheck {
   height: 400px;
 }
-=======
 /* special image styling for user dashboard bookcards */
 
 .bookcard-image {
@@ -217,4 +215,3 @@ margin-top: 10px
     height: 100%;
     object-fit: cover;
   }
->>>>>>> Stashed changes
