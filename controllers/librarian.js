@@ -37,7 +37,10 @@ router.get('/librarycard', async (req, res) => {
 router.get('/events', async (req, res) => {
   try{
     const eventsData = await Events.findAll({
-        attributes:['id','title','created_at','description','image'],
+
+
+        attributes:['id','title','created_at','description', 'time', 'date'],
+
         order:[['created_at','DESC']]
         
 
