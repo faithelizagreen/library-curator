@@ -1,22 +1,30 @@
 const router = require('express').Router();
+const multer = require('multer');
 const { Events } = require('../../models');
 const { isAdmin, withAuth } = require('../../utils/auth');
+
+
 
 //=======================================================
 //Create a new event if you are loggined and admin. 
 //=======================================================
 
 
-router.post('/', isAdmin, withAuth, async (req, res) => {
+router.post('/',isAdmin, withAuth, async (req, res) => {
   
-  
+  console.log(req.file)
   await Events.create({
     title: req.body.title,
     description: req.body.description,
+
+  
+
     time: req.body.time,
     date: req.body.date,
+
   })
     .then((newEvent) => res.redirect("/librarian/events"))
+    
     .catch((err) => {
       res.status(500).json(err)
     });
