@@ -37,12 +37,12 @@ router.get('/librarycard', async (req, res) => {
 router.get('/events', async (req, res) => {
   try{
     const eventsData = await Events.findAll({
-        attributes:['id','title','created_at','description'],
+        attributes:['id','title','created_at','description','image'],
         order:[['created_at','DESC']]
         
 
     });
-
+    console.log(eventsData);
     const events = eventsData.map((eventData) => eventData.get({ plain: true }));
     res.render('librarian',  {events,logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, modifyevent: true})
 }   

@@ -33,8 +33,8 @@
            </div>
 
             <div class="form-group">
-            <label class="form-label mt-2" for="customFile">Image for Event</label>
-            <input type="file" class="form-control" id="customFile" />
+            <label class="form-label mt-2" for="image">Image for Event</label>
+            <input type="file" class="form-control" id="image" name="image" title="image">
             </div>
           
         <div class="modal-footer">
@@ -74,6 +74,7 @@
 
               <div class="col-md-8 m-4">
                 <div class="card-body" id="event-body">
+                  <h1><img src="/public/images/bookshelf.jpeg" alt=""><h1>
                   <h5 class="card-title" id="event-title">{{title}}</h5>
                   <p class="card-text" id="event-text">{{description}}</p>
                 </div>

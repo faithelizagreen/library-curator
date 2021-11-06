@@ -53,7 +53,7 @@ router.post('/addbook', async (req,res) => {
 
 
     }).then((addBookData) => {
-        res.status(200).json(addBookData)
+        res.status(200).redirect('back')
 
     }).catch((err) => {
         res.status(500).json(err)

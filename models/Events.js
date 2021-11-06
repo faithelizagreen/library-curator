@@ -19,7 +19,7 @@ Events.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
-  img: {
+  image: {
     type: DataTypes.STRING,
     allowNull: true,
   }
