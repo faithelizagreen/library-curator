@@ -1,6 +1,6 @@
 
 const Sequelize = require('sequelize');
-const { Book, Events, Reader } = require('../models');
+const { Book, Events } = require('../models');
 
 const router = require('express').Router();
 const Op = Sequelize.Op

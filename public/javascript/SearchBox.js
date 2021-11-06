@@ -15,7 +15,7 @@ const searchFormHandler = async (event) => {
   
       // if (response.ok) {
       //   console.log(response);
-      //   //  document.location.replace('/search');
+      //    document.location.replace('/search');
       // } else {
       //   console.log('Failed to render book with that title');
       // }
@@ -25,5 +25,4 @@ const searchFormHandler = async (event) => {
   document
   .querySelector('.search-form')
   .addEventListener('submit', searchFormHandler);
-
 
