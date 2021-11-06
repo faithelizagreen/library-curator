@@ -7,7 +7,8 @@ const router = require('express').Router()
 
 router.get('/', withAuth, async (req,res) => {
     const eventsData = await Events.findAll({
-        attributes: ['title','description','created_at']
+        attributes: ['title','description','created_at'],
+        order:[['created_at','DESC']]
     })
 
     
