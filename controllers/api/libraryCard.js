@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
 router.post('/check', async (req, res) => {
   try{
     const reader = await LibraryCard.findOne({
+      attributes: ['card_number'],
       where: {
         card_number: req.body.card,
       },
@@ -39,7 +40,6 @@ router.post('/check', async (req, res) => {
         attributes: ['first_name','last_name']
       }]
     })
-    console.log(reader);
     if(reader){
       res.status(200).json(reader)
     }else{
