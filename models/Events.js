@@ -19,6 +19,10 @@ Events.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  img: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  }
 },
 {
     sequelize,
