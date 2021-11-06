@@ -22,9 +22,9 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/checkout', async (req, res) => {
+router.get('/bookmanager', async (req, res) => {
 
-    res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, checkout: true})
+    res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, bookmanager: true})
 
 });
 

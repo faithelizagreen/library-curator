@@ -7,8 +7,6 @@ const { withAuth, isAdmin } = require("../../utils/auth")
 router.get('/', withAuth, isAdmin, (req, res) => {
     Reader.findAll({
       attributes: ['id', 'first_name','last_name','email'],
-      
-
       include: 
       [{model:Book, attributes:['title','author','id','pages']}],
        group: ['reader_id']
@@ -30,7 +28,7 @@ router.get('/:id', withAuth, isAdmin, (req,res) => {
     .catch((err) =>{
         res.status(500).res.json(err)
     })
-})
+}) 
 
 router.post('/new', withAuth, isAdmin,  (req,res) => {
     Reader.create({

@@ -1,27 +1,29 @@
-<div class="d-flex flex-column align-items-center ">
-{{#each books as |book| }}
-<div class="row mb-4 w-75">
-    <div class="row mb-4 w-100">
-        <h2>
-        {{book.title}}
-        </h2>
+<div class="container" id="resultsContainer">
+    <div class="results m-4">
+      <h1>Search Results</h1>
     </div>
-  <div class="col-md-5">
- 
-    <p>
-        Author: {{book.author}}
-    </p>
-    {{#if book.reader_id}}
-    Currently not available.
-    {{else}}
-    Available to borrow.
-    {{/if}}
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{book.subject}}
-    </p>
-  </div>
-</div>
-{{/each}}
+    <div class="overflow-auto m-4 d-flex flex-column align-items-center" style="max-height: 700px;">
+    {{#each books as |book| }}
+      <div class="card row m-4 w-75">
+          <div class="row mb-4">
+              <h2>
+              {{book.title}}
+              </h2>
+          </div>
+          <h4>
+            Author: {{book.author}}
+        </h4>
+        <h6>
+          Subject: {{book.subject}}
+        </h6>
+        <div>
+        {{#if book.reader_id}}
+        <p class="unavailable">Currently not available.</p>
+        {{else}}
+        <p class="available">Available to borrow.</p>
+        {{/if}}
+      </div>
+    </div>
+    {{/each}}
+    </div>
 </div>

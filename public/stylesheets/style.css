@@ -1,28 +1,19 @@
-#left{
-    background-color: black;
+.nav {
+    background-color:rgb(35, 31, 51)
 }
-
-#right{
-    background-color: blue;
-}
-
-#small-box{
-    height: 720px;
-    overflow-x: scroll;
-}
-
 .nav .nav-item .nav-link {
     color: white;
     margin-top: 4px;
+    font-size: 15px;
 }
 
 .nav .nav-item .nav-link:hover {
-    color: #44B4FF;
+    color: #e7ad9c;
     transition: 0.3s;
 }
 
 .nav .nav-item .nav-link:focus {
-    color: #44B4FF;
+    color: #e7ad9c;
     font-weight: bolder;
 }
 
@@ -30,24 +21,43 @@
     height: 75px;
 }
 
-.login-card{
-    width: 360px;
-    height: 500px;
-    border-radius: 3px;
-    background-color: rgb(196, 190, 190);
-    margin-top: 200px;
+.jumbotron {
+    background-image: url("../images/bookshelf.jpeg");
+    background-repeat: no-repeat;
+    background-position: 75% 25%;
+    background-size: cover;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+#login-btn{
+  background-color: rgb(122, 119, 119);
+  border-color: rgb(122, 119, 119);
+  width: 80px;
 }
 
-.login-title{
+
+.date {
+    font-size: 21px;
     text-align: center;
-    padding-top: 15px;
+    margin: 30px;
 }
 
-.event-title{
-    padding-top: 15px;
+.date-two {
+    font-size: 21px;
+    text-align: center;
+    margin: 60px;
 }
 
+#event-body {
+    padding-bottom: 10px;
+}
 
+#events-container {
+    background-color:rgb(212, 169, 127)
+}
 
 form{
     width: 300px;
@@ -73,3 +83,128 @@ form input{
     height: 100%;    
     object-fit: cover;
   }
+
+/* Librarian Tool-tiles */
+  section.cms-boxes .cms-boxes-outer {
+    text-align: left;
+    margin-bottom: 6px;
+    padding: 0 3px;
+  }
+  section.cms-boxes .cms-boxes-outer .cms-boxes-items {
+    height: 350px;
+    display: table;
+    width: 100%;
+  }
+  section.cms-boxes .cms-boxes-outer .cms-boxes-items p {
+    color: #fff;
+  }
+  section.cms-boxes .cms-features {
+    background-color: #2d2c49;
+  }
+  section.cms-boxes .boxes-align {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  section.cms-boxes .small-box, 
+  section.cms-boxes .large-box {
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  section.cms-boxes .cms-boxes-items h2 {
+    font-size: 35px;
+    color: #fff;
+    font-weight: 400;
+    line-height: 37px;
+    text-align: center;
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+  }
+  section.cms-boxes .cms-features {
+    background-color: rgb(141, 129, 120);
+  }
+ 
+  section.cms-boxes .cms-security, 
+  section.cms-boxes .cms-documentation {
+    background-color: rgb(132, 165, 132);
+  }
+  section.cms-boxes .cms-scalability {
+    background: 0 0 no-repeat;
+    background-size: cover;
+    background-color: rgb(120, 136, 141);
+  }
+  section.cms-boxes .cms-security, section.cms-boxes .cms-documentation {
+    background-color: rgb(122, 143, 116);
+  }
+  section.cms-boxes .cms-boxes-items:hover {
+    opacity: .2;
+    cursor: pointer;
+  }
+.custom-btn {
+    color: #272626;
+    text-decoration: none;
+}
+
+.custom-btn:hover { 
+    color: #272626; 
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+#addEvent {
+  position: relative;
+}
+#date-form div {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#event-time label {
+display: inline-block;
+width: 300px;
+margin-top: 10px
+}
+
+#event-time:invalid+span:after {
+  content: '✖';
+  padding-left: 5px;
+}
+
+#event-time:valid+span:after {
+  content: '✓';
+  padding-left: 5px;
+}
+
+.results {
+  position: relative;
+  left: 160px;
+}
+.available {
+  color: #2d2c49;
+  font-size: medium;
+  font-weight: bolder;
+}
+
+.unavailable {
+  color: #531919;
+  font-size: medium;
+  font-weight: bolder;
+}
+
+#addBtn {
+  width: 100%;
+  background-color: rgb(122, 119, 119);
+  border-color: rgb(122, 119, 119);
+  margin-left: 4px;
+}
+
+#addBook {
+  position: relative;
+  left: 230px;
+  top: -350px;
+}
+
+#bookCheck {
+  height: 400px;
+}

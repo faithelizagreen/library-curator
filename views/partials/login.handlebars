@@ -1,23 +1,15 @@
-<div class="card m-4 pt-200">
-  <div class="login-card m-2">
-    <h2 class="login-title">Login</h2>
-    <form class="form login-form text-center">
-      <div class="form-group mt-4 w-25 ">
-        <label for="user-login text-center">Username:</label>
-        <input class="form-input" type="text" id="user-login" />
+  <form class="form-inline login-form  w-100 m-2">
+      <div class="row">
+        <div class="col">
+          <input class="form-control" type="text" id="user-login" placeholder="Username" />
+        </div>
+        <div class="col">
+          <input class="form-control" type="password" id="password-login" placeholder="Password" />
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-light" type="submit" id="login-btn">login</button>
+        </div>
       </div>
-      <div class="form-group mt-2 w-25 text-center">
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login"/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-dark mt-4 mb-4 w-100" type="submit">login</button>
-      </div>
-        <p class="p-1 mt-2 mb-1">Need an account? <a href="#">Contact the Library</a></p>
-        <p class="p-1">Forgot Password? <a href="signup.html">Recover Here</a></p>
-
     </form>
-  </div>
-
-
-<script src="/javascript/login.js"></script>
+  
+  <script src="/javascript/login.js"></script>

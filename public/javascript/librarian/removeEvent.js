@@ -13,8 +13,7 @@ async function deleteFormHandler(event_id) {
 }
 
 document.body.addEventListener(
-  'click',
-  (e) => {
+  'click', (e) => {
     // Check if target.id is a number and not a NaN and if it is equal
     // to a number it will go on to cofirm as a validator. (change later easier on user eyes)
     if (parseInt(e.target.id) === parseInt(e.target.id)) {
