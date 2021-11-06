@@ -8,6 +8,8 @@ const { isAdmin, withAuth } = require('../../utils/auth');
 
 
 router.post('/', isAdmin, withAuth, async (req, res) => {
+  
+  
   await Events.create({
     title: req.body.title,
     description: req.body.description,
@@ -65,5 +67,10 @@ router.put('/:id', isAdmin, withAuth, async (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
+  
+  
 
 module.exports = router;
