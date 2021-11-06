@@ -26,4 +26,3 @@ const searchFormHandler = async (event) => {
   .querySelector('.search-form')
   .addEventListener('submit', searchFormHandler);
 
-
