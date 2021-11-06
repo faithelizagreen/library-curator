@@ -15,7 +15,7 @@ const app = express();
 
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({
-  helpers: require("./utils/helpers.js").helpers,
+  helpers: require("./utils/helpers.js"),
   defaultLayout: 'main',
   partialsDir: 'views/partials/'
 });
@@ -29,6 +29,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
+  logging: false,
   secret: 'secret phrase',
   cookie: {maxAge: 600000}, // Cookie lasts for 10 mins before it is deleted.
   resave: true,             // Saves session to library  marking it active.
