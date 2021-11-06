@@ -15,7 +15,9 @@ async function newEventHandler(event_id) {
       method: 'POST',
       body: JSON.stringify({
         title,
-        description
+        description,
+        time,
+        date
       }),
       headers: {
         'Content-Type': 'application/json',

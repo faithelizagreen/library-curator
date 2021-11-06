@@ -25,9 +25,6 @@ catch{
 })
   
 
-
-  
-
 router.get('/search/:term', async (req, res, next) => {
   const searchFields = req.params.term
 

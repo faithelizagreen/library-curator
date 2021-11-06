@@ -25,7 +25,7 @@
             <div class="form-group" id="date-form">
               <label for="event-time" id="event-time">Choose a date for your event:</label>
               <div>
-                <input type="date" class="datepicker custom-datepicker" id="event-time">
+                <input class="datepicker" id="eventDate" name="date">
                 <span class="validity"></span>
               </div>
               
@@ -58,7 +58,7 @@
             <div class="col-md-4">
               <div class="date-card">
                 <div>
-                  <div class="date-two">{{format_date created_at}}</div>
+                  <div class="date-two">{{date}}</div>
                 </div>
               </div>
             </div>
@@ -74,6 +74,7 @@
                 <div class="card-body" id="event-body">
                   <h5 class="card-title" id="event-title">{{title}}</h5>
                   <p class="card-text" id="event-text">{{description}}</p>
+                  <p class="card-text" id="event-text">{{time}}</p>
                 </div>
               </div>
             </div>
@@ -81,6 +82,10 @@
         </div>
         {{/each}}
 </div>
+
+<script>
+  $('.datepicker').datepicker({format:'mm/dd/yyyy'});
+</script>
 
 {{!-- {{#each events as |event| }}
 
