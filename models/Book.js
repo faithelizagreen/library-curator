@@ -19,11 +19,11 @@ Book.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // image_url: {
-    //     type: DataTypes.TEXT,
-    //     allowNull: true,
-    //     defaultValue: "https://bulma.io/images/placeholders/320x480.png"
-    // },
+    image_url: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+        defaultValue: "https://bulma.io/images/placeholders/320x480.png"
+    },
     isbn: {
       type: DataTypes.STRING,
       allowNull: false,
