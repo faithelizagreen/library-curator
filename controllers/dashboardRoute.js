@@ -1,6 +1,6 @@
 
 const Sequelize = require('sequelize');
-const { Book, Events, Reader } = require('../models');
+const { Book, Favorite, Events, Reader } = require('../models');
 
 const router = require('express').Router();
 const Op = Sequelize.Op
@@ -9,33 +9,37 @@ const Op = Sequelize.Op
 
 // routes for user dashboard
 router.get("/", async (req, res) => {
-    console.log('test');
 
     const checkedOutBookData = await Book.findAll({
       where: {
         reader_id: req.session.user_id
       },
       attributes: ['title','author','image_url']
-    })
-  
-    // const checkedOutBookData = await Reader.findOne({
-    //   where:{
-    //     id: req.session.user_id
-    //   },
-    //   include: [
-    //     {
-    //       model: Book,
-    //       attributes: ['title','author','image_url']
-    //     }
-    //   ],
-    // });
+    });
+
     const checkedOutBooks = checkedOutBookData.map((checkedOutBook) => checkedOutBook.get({ plain: true }));
-    console.log(checkedOutBooks);
+  
+
+    const favoriteBookData = await Book.findAll({
+        
+          include: [
+            {
+              model: Reader,
+              where: {
+                id: req.session.user_id
+              },
+              through: Favorite
+          },
+        ]        
+    });
+
+    const favoriteBooks = favoriteBookData.map((favoriteBook) => favoriteBook.get({ plain: true }));
+    console.log(favoriteBooks);
   
     res.render("userDash", {
-      checkedOutBooks,
+      checkedOutBooks, favoriteBooks,
       logged_in: req.session.logged_in
     });
-  })
+  });
   
     module.exports = router;

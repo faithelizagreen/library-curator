@@ -19,6 +19,7 @@ Events.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+
   time: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -30,6 +31,7 @@ Events.init({
     type: DataTypes.STRING,
     allowNull: true,
   }
+
   },
 },
 {

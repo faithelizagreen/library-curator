@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path')
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers')
+
 //-------------------------
 // Router path file
 //-------------------------
@@ -20,6 +21,10 @@ const hbs = exphbs.create({
   partialsDir: 'views/partials/',
   helpers
 });
+
+
+
+
 
 //==============================================
 //express-session configs for user on connection

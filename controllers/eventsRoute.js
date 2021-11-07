@@ -14,7 +14,7 @@ router.get('/', withAuth, async (req,res) => {
     
     const events = eventsData.map((events) => events.get({ plain:true}));
 
-    res.render('eventpage', {events, logged_in: req.session.logged_in})
+    res.render('eventPage', {events, logged_in: req.session.logged_in})
   });
   
 

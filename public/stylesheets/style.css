@@ -56,7 +56,7 @@
 }
 
 #events-container {
-    background-color:rgb(212, 169, 127)
+    background-color:rgb(212, 169, 127);
 }
 
 form{
@@ -208,3 +208,10 @@ margin-top: 10px
 #bookCheck {
   height: 400px;
 }
+/* special image styling for user dashboard bookcards */
+
+.bookcard-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
