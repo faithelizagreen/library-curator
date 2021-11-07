@@ -39,7 +39,7 @@ router.get('/events', async (req, res) => {
     const eventsData = await Events.findAll({
 
 
-        attributes:['id','title','created_at','description', 'time', 'date'],
+        attributes:['id','title','created_at','description','time','date'],
 
         order:[['created_at','DESC']]
         
