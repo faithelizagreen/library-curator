@@ -27,6 +27,11 @@ Events.init({
   date: {
     type: DataTypes.STRING,
     allowNull: false,
+  img: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  }
+
   },
 },
 {
