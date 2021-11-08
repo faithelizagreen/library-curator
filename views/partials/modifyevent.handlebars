@@ -26,7 +26,7 @@
             <div class="form-group" id="date-form">
               <label for="event-time" id="event-time">Choose a date for your event:</label>
               <div>
-                <input class="datepicker" id="eventDate" name="date">
+                <input type="date" class="datepicker" id="eventDate" name="date">
                 <span class="validity"></span>
               </div>
               
@@ -53,14 +53,14 @@
 </div>
 
 {{!-- Events to Display --}}
-<div class="container overflow-auto" style="max-height:600px;">
+<div class="container overflow-auto d-flex flex-column align-items-center" style="max-height:600px;">
       {{#each events as |event| }}
-        <div class="card m-3" style="max-width: 50%;">
+        <div class="card m-3" style="max-width: 50%; min-width: 50%;">
           <div class="row g-0">
             <div class="col-md-4">
               <div class="date-card">
                 <div>
-                  <div class="date-two">{{date}}</div>
+                  <div class="date-two">{{format_date date}}</div>
                 </div>
               </div>
             </div>
@@ -74,7 +74,6 @@
 
               <div class="col-md-8 m-4">
                 <div class="card-body" id="event-body">
-                  <h1><img src="/public/images/bookshelf.jpeg" alt=""><h1>
                   <h5 class="card-title" id="event-title">{{title}}</h5>
                   <p class="card-text" id="event-text">{{description}}</p>
                   <p class="card-text" id="event-text">{{time}}</p>
@@ -85,47 +84,6 @@
         </div>
         {{/each}}
 </div>
-
-<script>
-  $('.datepicker').datepicker({format:'mm/dd/yyyy'});
-</script>
-
-{{!-- {{#each events as |event| }}
-
-
-
-
-<div class="card m-3" style="max-width: 900px">
-  <div class="row g-0">
-    <div class="col-md-4">
-
-      <img src="{{img}}" class="img-fluid rounded-start" alt="...">
-    </div>
-   
-    <div class="col-md-8"> 
-  
-      <div class="container d-flex justify-content-end" id="events">
-       <button class="btn mt-2 mr-4" >Edit Event</button>
-       <button class="btn deleteEventBtn" id='{{id}}'><span style="font-size:10px; pointer-events:none" class="deleteEvent">&#10006;</span></button>
-        </div>  
-    
-   
-      <div class="card-body m-4">
-        
-        
-  
-        <h5 class="card-title">{{title}}</h5>
-        <form>
-        <p id="event_id" values=''></p>
-        </form>
-        <p class="card-text">{{description}}</p>
-        <p class="card-text"><small class="text-muted">{{created_at}}</small></p>
-        
-      </div>
-    </div>
-  </div>
-</div>
-{{/each}} --}}
 
 <script src="/javascript/librarian/removeEvent.js"></script>
 <script src="/javascript/librarian/addEvent.js"></script>

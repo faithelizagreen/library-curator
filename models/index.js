@@ -2,7 +2,6 @@ const Reader = require('./Reader');
 const Book = require('./Book');
 const LibraryCard = require('./LibraryCard');
 const Events = require('./Events');
-
 const Favorite = require('./Favorite')
 
 Reader.belongsToMany(Book,{
@@ -13,8 +12,6 @@ Book.belongsToMany(Reader,{
     through: Favorite,
     foreignKey: 'book_id'
 });
-
-
 
 
 Reader.hasOne(LibraryCard, {
@@ -39,5 +36,5 @@ Book.belongsTo(Reader, {
 
 
 
-module.exports = { Reader, Book, LibraryCard, Events};
+module.exports = { Reader, Book, LibraryCard, Favorite, Events};
 

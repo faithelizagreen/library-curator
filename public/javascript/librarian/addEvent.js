@@ -1,5 +1,3 @@
-
-
 async function newEventHandler(event_id) {
     
   

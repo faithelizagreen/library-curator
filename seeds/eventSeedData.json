@@ -2,11 +2,15 @@
 [
 {
         "title": "Book Club Meeting",
-        "description": "Book club meeting with all your friends"
+        "description": "Book club meeting with all your friends",
+        "time": "12:30 PM",
+        "date": "2021-11-06"
 
 },
 {
         "title": "Party at franks",
-        "description": "franks party in the library this week"
+        "description": "franks party in the library this week",
+        "time": "12:30 PM",
+        "date": "2021-11-06"
 }
 ]

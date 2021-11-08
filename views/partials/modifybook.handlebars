@@ -5,86 +5,102 @@
          <div class="login-card m-4">
             <form class="form" id="bookscan">
                <div class="form-group mt-4">
-               <label for="scanner">Library Card:</label><br>
-               <input class="form-input w-100" type="text" id="user-login" />
+                  <label for="scanner">Library Card:</label><br>
+                  <input class="form-input w-100" type="text" id="user-login" />
                </div>
                <div class="form-group mt-2">
-               <label for="password-login">Scan Book</label><br>
-               <input class="form-input w-100" type="password" id="password-login"/>
+                  <label for="password-login">Scan Book</label><br>
+                  <input class="form-input w-100" type="password" id="password-login" />
                </div>
                <div class="form-group">
                   <div class="dropdown">
-                     <button class="btn btn-secondary mt-4 mb-4 w-100 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <button class="btn btn-secondary mt-4 mb-4 w-100 dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Select
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Check In</a>
                         <a class="dropdown-item" href="#">Check Out</a>
                      </div>
-                     </div>
+                  </div>
             </form>
          </div>
+      </div>
+   </div>
+   <div class="col m-2">
+      <div class="row">
+         <div class="col p-0">
+            <input class="form-control" type="search" id="bookInput" placeholder="Search Book Title" aria-label="Search" aria-describedby="search-addon"/>
+         </div>
+         <div class="col p-0">
+            <button class="btn btn-light" type="button" data-toggle="modal" data-target="#addBook" id="addBtn">Add
+               Book</button>
+         </div>
+      </div>
+   </div>
+
+   {{!-- Modal Structure --}}
+   <div class="container">
+      <div class="modal fade" id="addBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+         <div class="modal-dialog" style="max-width: 68%;" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Add New Book</h5>
+                  <button type="button" class="close btn btn-dark" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+                  </button>
+               </div>
+               <form action="/api/books/addbook" method="post" class="container row">
+                  <div class="form-group col">
+                     <label for="eventTitle" class="col-form-label">Book Title:</label>
+                     <input type="text" class="form-control" id="book-title" name="title">
+                  </div>
+                  <div class="form-group col">
+                     <label for="eventTime" class="col-form-label">Author:</label>
+                     <input type="text" class="form-control" id="author" name="author">
+                  </div>
+                  <div class="form-group col">
+                     <label for="isbn" class="col-form-label">ISBN:</label>
+                     <input type="text" class="form-control" id="recipient-name" name="isbn">
+                  </div>
+                  <div class="form-group">
+                     <label for="message-text" class="col-form-label">Subjects:</label>
+                     <textarea class="form-control mb-4" id="message-text" name="subject"></textarea>
+                     <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" value="submit" class="btn btn-dark">Add Book</button>
+                     </div>
+
+                  </div>
+
+
+            </div>
+         </div>
+
+
+         </form>
+      </div>
    </div>
 </div>
-      <div class="col m-2">
-            <div class="row">
-            <div class="col p-0">
-               <input class="form-control" type="search" id="searchInput" placeholder="Search Book"/>
-            </div>
-            <div class="col p-0">
-               <button class="btn btn-light" type="button" data-toggle="modal" data-target="#addBook" id="addBtn">Add Book</button>
-            </div>
-            </div> 
-      </div>
+</div>
 
-{{!-- Modal Structure --}}
-<div class="container">
-  <div class="modal fade" id="addBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog" style="max-width: 68%;" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add New Book</h5>
-          <button type="button" class="close btn btn-dark" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true" style="font-size: 20px;">&times;</span>
-          </button>
-        </div>
-        <form action="/api/books/addbook" method="post" class="container row">
-            <div class="form-group col">
-              <label for="eventTitle" class="col-form-label">Book Title:</label>
-              <input type="text" class="form-control" id="recipient-name" name="title">
-            </div>
-            <div class="form-group col">
-              <label for="eventTime" class="col-form-label">Author:</label>
-              <input type="text" class="form-control" id="recipient-name" name="author">
-            </div>
-             <div class="form-group col">
-              <label for="eventTime" class="col-form-label">ISBN:</label>
-              <input type="text" class="form-control" id="recipient-name" name="isbn">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Subjects:</label>
-              <textarea class="form-control mb-4" id="message-text" name="subject"></textarea>
-              <div class="modal-footer">
-
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" value="submit" class="btn btn-dark">Add Book</button>
-                </div>
-                        
-           </div>
-          
-        
-            </div>            
-           </div>
-          
-       
-        </form>
-      </div>
+{{!-- Books to Display --}}
+<div class="container" id="resultsContainer">
+    <div class="d-flex flex-row">
+    {{#if logged_in}}
+    <div class="flex-column mb-4" id="small-box">
+    {{> results}}
     </div>
-  </div>
+    {{else}}
+    {{> results}}
+    {{/if}}
+    </div>
 </div>
 
 
-   {{!-- <div class="row justify-content-center " id="cardBox">
+{{!-- <div class="row justify-content-center " id="cardBox">
       <div class="col-8" id="box1">
          <form class="w-100 mb-4" id="librarySearch">
                <label for="librarycard" class="form-label">Scan Library Card</label>
@@ -110,4 +126,7 @@
 </div>
 
 
-<script src="/javascript/librarian/checkout.js"></script>
+{{!-- <script src="/javascript/librarian/checkout.js"></script> --}}
+<script src="/javascript/librarian/addBook.js"></script>
+<script src="/javascript/librarian/removeBook.js"></script>
+<script src="/javascript/librarian/searchBook.js"></script>
