@@ -7,7 +7,7 @@ const librarianSearchHandler = async (event) => {
     console.log(bookTitle);
   
     if (bookTitle) {
-      location.href = 'librarian/bookmanager/search/' + bookTitle
+      location.href = `/search/${bookTitle}`
     
     }
   };
