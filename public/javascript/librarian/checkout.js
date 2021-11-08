@@ -1,7 +1,7 @@
 
 async function checkCard(){
 
-    const cardNum = document.getElementById('librarycard').value.trim()
+    const cardNum = document.getElementById('scanCard').value.trim()
 
     const card = {
         card: cardNum
@@ -16,25 +16,36 @@ async function checkCard(){
 
         if(response.ok){
             const person = await response.json();
-            console.log(person);
-            document.getElementById('box1').style.display = "none";
+            document.getElementById('libCard').style.display = "none";
             document.getElementById('cardNum').innerHTML = person.card_number
             document.getElementById('namespace')
-            .innerHTML = `${person.reader.first_name} ${person.reader.last_name}`;
-            document.getElementById('box2').style.display = "inline";
+            .innerHTML = `Checking out books for ${person.reader.first_name} ${person.reader.last_name}`;
+            document.getElementById('bookScan').style.display = "inline";
             
-         }
+         }else{
+            $("#scanCard").val("Unable to find Library Card. Try again")
+            $("#scanCard").attr("style","color:red")        
+            setTimeout(function(){
+                $("#scanCard").val("")
+                $("#scanCard").attr("style","") 
+             }, 1500);
+        }
+        
         
     }
     catch(err){
         console.log(err);
+   
+    }
+    finally{
+
     }
 
 }
 
-async function checkoutBook(){
+async function checkOutBook(){
 
-    const bookNum = document.getElementById('scanner').value.trim()
+    const bookNum = document.getElementById('scanBook').value.trim()
 
     const book = {
         book_id: bookNum,
@@ -49,8 +60,17 @@ async function checkoutBook(){
         })
 
         if(response.ok){
-            console.log("success!");
-            document.getElementById("bookscan").reset();
+            $("#scanBook").val("Book checked out!")  
+            setTimeout(function(){
+                $("#scanBook").val("")
+             }, 1500);
+        }else{
+            $("#scanBook").val("Unable to find book")  
+            $("#scanBook").attr("style","color:red")     
+            setTimeout(function(){
+                $("#scanBook").val("")
+                $("#scanBook").attr("style","") 
+             }, 1500);
         }
         
     }
@@ -59,26 +79,86 @@ async function checkoutBook(){
     }
     finally{
         
-
     }
-
 
 }
 
-document
-.getElementById('bookscan')
-.addEventListener('submit', function(event){
+
+async function checkInBook(){
+
+    const bookNum = document.getElementById('scanBook').value.trim()
+
+    const book = {
+        book_id: bookNum,
+        card: document.getElementById('cardNum').innerHTML
+    }
+    try{
+        const response = await fetch(`/api/books/in`, {
+            method: 'put',
+            body: JSON.stringify(book),
+            headers: { 'Content-Type': 'application/json' },
+        })
+
+        if(response.ok){
+            $("#scanBook").val("Book checked in!")  
+            setTimeout(function(){
+                $("#scanBook").val("")
+             }, 1500);
+        }else{
+            $("#scanBook").val("Unable to find book")  
+            $("#scanBook").attr("style","color:red")     
+            setTimeout(function(){
+                $("#scanBook").val("")
+                $("#scanBook").attr("style","") 
+             }, 1500);
+        }
+        
+    }
+    catch(err){
+        console.log("error in checkout");
+    }
+    finally{
+        
+    }
+}
+
+
+
+$(".dropdown-item").click(function(event){
     event.preventDefault();
-    checkoutBook();
-});
+    console.log(event.target);
+    const option = event.target.innerHTML;
+    
+    switch (option){
 
+        case "Check Out":
+            $("#libCard").attr("style","display:inline")
+            $("#bookScan").attr("style","display:none")
+            $(".dropdown-toggle").html("Checking Out")
+            break;
+        
+        case "Check In":
+            $("#libCard").attr("style","display:none")
+            $("#bookScan").attr("style","display:inline")
+            $("#namespace").html("")
+            $("#cardNum").html("")
+            $(".dropdown-toggle").html("Checking In")
+            break;
+    }
 
+})
 
-
-document
-.getElementById('librarySearch')
-.addEventListener('submit', function(event){
+$("#checkCard").on("submit",  function(event){
     event.preventDefault();
     checkCard();
-});
+})
 
+$("#checkBook").on("submit",  function(event){
+    event.preventDefault();
+
+    const option = $(".dropdown-toggle").html();
+    console.log(option);
+
+    option == "Checking Out" ? checkOutBook() : checkInBook();
+
+})
