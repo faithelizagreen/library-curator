@@ -30,8 +30,8 @@ router.get('/:id', withAuth, isAdmin, (req,res) => {
     })
 }) 
 
-router.post('/new', withAuth, isAdmin,  (req,res) => {
-    Reader.create({
+router.post('/', withAuth, isAdmin, async  (req,res) => {
+   await  Reader.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email : req.body.email,
@@ -39,9 +39,8 @@ router.post('/new', withAuth, isAdmin,  (req,res) => {
         is_admin: req.body.admin? true: false,
         
         include:[{model:LibraryCard},{attributes:['id']}]
-        
-        
-    }).then((readerData) => res.json(readerData))       
+              
+    }).then((readerData) => res.json(readerData))      
      .catch((err) => {
         res.status(500).json(err)
     })
@@ -88,6 +87,24 @@ router.post('/login', async (req, res) => {
     }
   });
 
+  router.delete('/:id', isAdmin, withAuth, (req, res) => {
+    Reader.destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+      .then((readerData) => {
+        if (!readerData) {
+          res.status(404).json({ message: 'No Event found with this id' });
+          return;
+        }
+        res.json(readerData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
   
  
 

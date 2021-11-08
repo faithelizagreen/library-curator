@@ -33,9 +33,6 @@ router.post('/',isAdmin, withAuth, async (req, res) => {
   await Events.create({
     title: req.body.title,
     description: req.body.description,
-
-  
-
     time: req.body.time,
     date: req.body.date,
 
