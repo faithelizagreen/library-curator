@@ -22,17 +22,13 @@ Events.init({
 
   time: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   date: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  img: {
     type: DataTypes.STRING,
     allowNull: true,
   }
   },
-},
 {
     sequelize,
     timestamps: true,
