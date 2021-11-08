@@ -1,20 +1,39 @@
-
 {{#each events as |event| }}
-
-
-
-
 <div class="card m-3" style="max-width: 900px">
   <div class="row g-0">
     <div class="col-md-4">
+      <div class="date-card">
+        <div>
+          <div class="date">{{date}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
 
+      <div class="col-md-8 m-4">
+        
+        <div class="card-body" id="event-body">
+          <h5 class="card-title" id="event-title">{{title}}</h5>
+          <p class="card-text" id="event-text">{{description}}</p>
+
+
+
+          <p class="card-text" id="event-text">{{time}}</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  {{/each}}
+  {{!-- 
       <img src="/images/poetry.jpeg" class="img-fluid rounded-start" alt="...">
     </div>
    
     <div class="col-md-8"> 
  
    
-      <div class="card-body m-4">
+      <dv class="card-body m-4">
         
         
         
@@ -25,5 +44,4 @@
       </div>
     </div>
   </div>
-</div>
-{{/each}}
+</div> --}}

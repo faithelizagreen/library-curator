@@ -1,26 +1,10 @@
-
-{{#if logged_in}}
-<div class="container.fluid d-flex flex-column align-items-center">
-{{else}}
-<div class="container.fluid d-flex justify-content-between">
-{{/if}}
-  <div class="col">
-   
-    <h2 class="m-3">Events</h2>
-    <div class="">{{>events }}</div>
-    
-  </div>
-  {{#unless logged_in}}
-  <div class="row">
-    <div class="">{{>login}}</div>
-  </div> 
-  {{/unless}}
+<div class="container.fluid d-flex flex-column align-items-center" id="events-container">
+  <h2 class="row m-3">Events</h2>
+  <div class="">{{>events}}</div>
 </div>
 
-
-</div class="container">
+</div class="container.fluid d-flex flex-column align-items-center" id="books-container">
   <div class="row">
     <div class="">{{>books}}</div>
-  </div> 
+  </div>
 </div>
-

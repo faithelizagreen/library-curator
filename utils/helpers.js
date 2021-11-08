@@ -22,3 +22,7 @@ module.exports = {
     return new Handlebars.SafeString(button)
   }
 };
+  format_date: (date) => {
+    
+  }
+}

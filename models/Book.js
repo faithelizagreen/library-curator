@@ -21,7 +21,7 @@ Book.init(
     },
     image_url: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        allowNull: true,
         defaultValue: "https://bulma.io/images/placeholders/320x480.png"
     },
     isbn: {
