@@ -43,12 +43,14 @@ router.post('/check', async (req, res) => {
     if(reader){
       res.status(200).json(reader)
     }else{
-      res.status(500).end()
+      res.status(500).json({ error: 'Unable to find card' })
     }
 
 
   }
   catch(err){
+    console.log("Here server");
+    res.status(500).send("Request Error")
 
   }
 });

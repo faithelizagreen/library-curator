@@ -13,5 +13,5 @@ const librarianSearchHandler = async (event) => {
   };
 
   document
-  .querySelector('.search-form')
+  .getElementById('bookInputForm')
   .addEventListener('submit', librarianSearchHandler);

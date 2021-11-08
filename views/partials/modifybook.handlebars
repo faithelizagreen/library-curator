@@ -3,41 +3,47 @@
    <div class="row">
       <div class="card col mt-2 mb-4 p-0" id="bookCheck" style="max-width: 33%;">
          <div class="login-card m-4">
-            <form class="form" id="bookscan">
-               <div class="form-group mt-4">
-                  <label for="scanner">Library Card:</label><br>
-                  <input class="form-input w-100" type="text" id="user-login" />
-               </div>
-               <div class="form-group mt-2">
-                  <label for="password-login">Scan Book</label><br>
-                  <input class="form-input w-100" type="password" id="password-login" />
-               </div>
-               <div class="form-group">
-                  <div class="dropdown">
-                     <button class="btn btn-secondary mt-4 mb-4 w-100 dropdown-toggle" type="button"
-                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select
-                     </button>
-                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Check In</a>
-                        <a class="dropdown-item" href="#">Check Out</a>
-                     </div>
+               <div class="dropdown" >
+                  <button class="btn btn-secondary mt-4 mb-4 w-100 dropdown-toggle" type="button" id="mainMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Check In / Check Out
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" id="checkMenu">
+                     <a class="dropdown-item">Check In</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item">Check Out</a>
                   </div>
+               </div>
+            <form class="form" id="checkCard">
+                  <div class="form-group mt-4" id="libCard" style="display:none">
+                     <label for="scanCard">Library Card:</label><br>
+                     <input class="form-input w-100" type="text" id="scanCard" />
+               </div>
             </form>
+            <form class="form" id="checkBook">
+               <div class="form-group mt-2" id="bookScan" style="display:none">
+                  <label for="scanBook">Scan Book</label><br>
+                  <input class="form-input w-100" type="text" id="scanBook" />
+                  <span id="namespace"></span> <span id="cardNum"></span>
+               </div>
+            </form>
+ 
+         </div>
+      </div>
+      <div class="col m-2" id="bookBox">
+         <div class="row">
+            <div class="col p-0">
+               <form class="w-100" id="bookInputForm">
+                  <input class="form-control " type="search" id="bookInput" placeholder="Search Book Title" aria-label="Search" aria-describedby="search-addon"/>
+               </form>
+            </div>
+            <div class="col p-0">
+               <button class="btn btn-light" type="button" data-toggle="modal" data-target="#addBook" id="addBtn">
+                  Add Book</button>
+            </div>
          </div>
       </div>
    </div>
-   <div class="col m-2">
-      <div class="row">
-         <div class="col p-0">
-            <input class="form-control" type="search" id="bookInput" placeholder="Search Book Title" aria-label="Search" aria-describedby="search-addon"/>
-         </div>
-         <div class="col p-0">
-            <button class="btn btn-light" type="button" data-toggle="modal" data-target="#addBook" id="addBtn">Add
-               Book</button>
-         </div>
-      </div>
-   </div>
+
 
    {{!-- Modal Structure --}}
    <div class="container">
@@ -125,8 +131,9 @@
 
 </div>
 
-
-{{!-- <script src="/javascript/librarian/checkout.js"></script> --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="/javascript/librarian/checkout.js"></script>
 <script src="/javascript/librarian/addBook.js"></script>
 <script src="/javascript/librarian/removeBook.js"></script>
 <script src="/javascript/librarian/searchBook.js"></script>

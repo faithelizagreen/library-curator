@@ -4,7 +4,7 @@ const router = require('express').Router();
 const Op = Sequelize.Op
 const { withAuth, isAdmin } = require("../../utils/auth")
 
-router.put("/out", withAuth, isAdmin, async (req,res,next) => {
+router.put("/out", withAuth, isAdmin, async (req,res) => {
 
     try{        
         const checkOut = await Book.findOne({
@@ -22,8 +22,30 @@ router.put("/out", withAuth, isAdmin, async (req,res,next) => {
         })
 
         checkOut.reader_id = reader.id;
-        checkOut.save()     
+        checkOut.save()    
+        
+        res.status(200).end();
 
+
+    }
+    catch(err){
+        res.status(500).json({message:"Unable to find book"})
+    }
+
+})
+
+router.put("/in", withAuth, isAdmin, async (req,res) => {
+
+    try{        
+        const checkOut = await Book.findOne({
+            where: {
+                id : req.body.book_id
+            }
+        })
+
+        checkOut.reader_id = null;
+        
+        res.status(200).end();
 
     }
     catch(err){
