@@ -39,5 +39,5 @@ Book.belongsTo(Reader, {
 
 
 
-module.exports = { Reader, Book, LibraryCard, Events};
+module.exports = { Reader, Book, LibraryCard, Events,Favorite};
 

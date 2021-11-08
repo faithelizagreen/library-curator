@@ -45,7 +45,6 @@ router.get('/events', async (req, res) => {
         
 
     });
-    console.log(eventsData);
     const events = eventsData.map((eventData) => eventData.get({ plain: true }));
     res.render('librarian',  {events,logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, modifyevent: true})
 }   
@@ -54,14 +53,43 @@ catch(err){
 }
 })
 
-    
+
+
+
+router.put('/events/:id', async (req, res) => {
+
+    // Calls the update method on the Book model
+    Events.update(
+      {
+        // All the fields you can update and the data attached to the request body.
+        title: req.body.title,
+        description: req.body.description,
+        time: req.body.time,
+        date: req.body.date,
+      },
+      {
+        // Gets the books based on the isbn given in the request parameters
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then((updatedEvent) => {
+        // Sends the updated book as a json response
+        res.json(updatedEvent)
+      })
+      .catch((err) => res.json(err));
+  });
+
+
+
 
 
 
 router.get('/books', async (req, res) => {
 
-    res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, books: true})
+    res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin,books: true})
 
 });
 
-module.exports = router
+module.exports = router;
