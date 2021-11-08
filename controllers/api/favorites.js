@@ -47,7 +47,6 @@ router.delete('/:id', withAuth, (req, res) => {
       });
   });
 
-  module.exports = router;
  
 router.get("/add/:id", withAuth, async (req,res) => {
 
@@ -88,7 +87,6 @@ router.post("/check", withAuth, async (req,res) => {
   
 
 })
-
 
 
 module.exports = router

@@ -1,54 +1,62 @@
-<div class="container" style="max-height: 60%;">
-    <div class="d-flex overflow-auto flex-column align-items-center">
+<div class="container" id="resultsContainer">
+    <div class="results m-4">
+      <h1>Search Results</h1>
+    </div>
+    <div class="overflow-auto m-4 d-flex flex-column align-items-center" style="max-height: 700px;">
 
       {{#if logged_in}}
-
-
-              {{#each books as |book| }}
-              <div class="card p-4 m-4 w-75">
-                  <div class="d-flex justify-content-between mb-4">
+        {{#each books as |book| }}
+          <div class="card row m-4 w-75">
+            <div class="container d-flex mt-4" id="results">
+                  <div class="row mb-4">
                       <h2>
                       {{book.title}}
-                      </h2>
-                      {{!-- {{favorite_button book.id}} --}}
-                      <a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>
+                      </h2> 
                   </div>
-                <div class="col">
-                  <h4>
-                      Author: {{book.author}}
-                  </h4>
-                  {{#if book.reader_id}}
-                  <p id="unavailable">Currently not available.</p>
-                  {{else}}
-                  <p id="available">Available to borrow.</p>
-                  {{/if}}
-                </div>
-              </div>
-              {{/each}}
-
+                        <a class="btn justify-content-end" href="/api/favorites/add/{{book.id}}" type="button"><i class="favorite-btn fas fa-2x fa-heart"></i></a>
+            </div>
+            <h4>
+                Author: {{book.author}}
+            </h4>
+            <h6>
+              Subject: {{book.subject}}
+            </h6>
+            <div>
+              {{#if book.reader_id}}
+                <p class="badge bg-danger text-white">UNAVAILABLE.</p>
+              {{else}}
+                <p class="badge bg-success text-white">AVAILABLE</p>
+              {{/if}}
+            </div>
+        </div>
+        {{/each}}
       {{else}}
-      
               {{#each books as |book| }}
-              <div class="card p-4 m-4 w-75">
-                  <div class="d-flex justify-content-between mb-4">
+          <div class="card row m-4 w-75">
+            <div class="container d-flex mt-4" id="results">
+                  <div class="row mb-4">
                       <h2>
                       {{book.title}}
-                      </h2>
+                      </h2> 
                   </div>
-                <div class="col">
-                  <h4>
-                      Author: {{book.author}}
-                  </h4>
-                  {{#if book.reader_id}}
-                  <p id="unavailable">Currently not available.</p>
-                  {{else}}
-                  <p id="available">Available to borrow.</p>
-                  {{/if}}
-                </div>
-              </div>
-              {{/each}}
+            </div>
+            <h4>
+                Author: {{book.author}}
+            </h4>
+            <h6>
+              Subject: {{book.subject}}
+            </h6>
+            <div>
+              {{#if book.reader_id}}
+                <p class="badge bg-danger text-white">UNAVAILABLE.</p>
+              {{else}}
+                <p class="badge bg-success text-white">AVAILABLE</p>
+              {{/if}}
+            </div>
+        </div>
+        {{/each}}
 
-      {{/if}}
-      
-      </div>
+  </div>
 </div>
+
+

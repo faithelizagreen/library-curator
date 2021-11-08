@@ -2,6 +2,39 @@
 <div class="container d-flex justify-content-center">
 <button type='button' class="btn btn-dark w-75 mb-3 mt-2" data-toggle="modal" data-target="#addEvent">Add New Member</button>
 </div>
+<div class="container d-flex justify-content-center">
+<button type='button' class="btn btn-dark w-75 mb-3 mt-2" data-toggle="modal" data-target="#addCard">Generate card for member by Id</button>
+</div>
+
+<div class="container w-50">
+  <div class="modal fade" id="addCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 100%;" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Member Info</h5>
+          <button type="button" class="close btn btn-dark" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+          </button>
+        </div>
+        <form action="/api/cards" method="post" class="container row">
+            <div class="form-group col">
+              <label for="eventTitle" class="col-form-label">Member ID</label>
+              <input type="text" class="form-control" id="id" name="reader_id">
+            </div>
+             <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" value="submit" class="btn btn-dark">Confirm</button>
+        </div>
+        </div>
+
+          
+       
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- add member MOdal -->
 <div class="container">
@@ -14,7 +47,7 @@
             <span aria-hidden="true" style="font-size: 20px;">&times;</span>
           </button>
         </div>
-        <form action="/api/readers/new" method="post" class="container row">
+        <form action="/api/readers" method="post" class="container row">
             <div class="form-group col">
               <label for="eventTitle" class="col-form-label">First Name:</label>
               <input type="text" class="form-control" id="recip-name" name="first_name">
@@ -76,7 +109,7 @@
       <td>{{email}}</td>
       <td>{{library_card.id}}</td>
       <td>{{library_card.card_number}}</td>
-      <td><button class="btn">❌</button></td>
+      <td><button class="btn" id="{{id}}">❌</button></td>
     </tr>
   </tbody>
   {{/each}}
