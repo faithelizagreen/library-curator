@@ -44,7 +44,7 @@ router.get('/search/:term', async (req, res, next) => {
 },
 function (req, res){
 
-    res.render('search', {books:res.locals.books, logged_in: req.session.logged_in})
+    res.render('search', {books:res.locals.books, logged_in: req.session.logged_in })
 
 
 

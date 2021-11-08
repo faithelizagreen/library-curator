@@ -1,4 +1,4 @@
-
+const { response } = require("express");
 
 module.exports = {
 
@@ -16,12 +16,31 @@ module.exports = {
     }
   },
 
+  favorite_button: async (id) => {
 
+    const check = {
+      book_id : id
+    }
 
-  favorite_button: (id) => {
-   const button = `<a class="btn" href="/api/favorites/add/${id}" style="color: Green" role="button">X</a>`
+    try{
+        const response = await fetch(`/api/favorite/check`, {
+          method: 'post',
+          body: JSON.stringify(check),
+          headers: { 'Content-Type': 'application/json' },
+      })
 
-    return new Handlebars.SafeString(button)
+      if(response.ok){
+        // <a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>  
+        return ``    
+      }else{
+        return `<a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>`
+      }
+
+    }
+    catch(err){
+
+    }
+
   },
 
   format_date: (date) => {
