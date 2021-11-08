@@ -68,14 +68,14 @@ router.put('/events/:id', async (req, res) => {
         date: req.body.date,
       },
       {
-        // Gets the books based on the isbn given in the request parameters
+        // Gets the events based on the id given in the request parameters
         where: {
           id: req.params.id,
         },
       }
     )
       .then((updatedEvent) => {
-        // Sends the updated book as a json response
+        // Sends the updated event as a json response
         res.json(updatedEvent)
       })
       .catch((err) => res.json(err));
