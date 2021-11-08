@@ -26,7 +26,7 @@
     background-repeat: no-repeat;
     background-position: 75% 25%;
     background-size: cover;
-    height: 30vh;
+    height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -72,7 +72,7 @@ form input{
 }
 
 .footer {
-    background-color: rgb(12, 14, 28); 
+    background-color: rgb(35, 31, 51)
 }
 
 /* special image styling for user dashboard bookcards */
@@ -219,3 +219,23 @@ margin-top: 10px
 #user-dash {
   min-height: 40%
 }
+
+.favorite-btn:hover {
+  color: red
+}
+
+.results-container {
+  height: 60%
+}
+
+.search-form {
+  width: 40%;
+}
+
+.search-input {
+  height: 40px;
+  font-size: medium;
+}
+
+
+
