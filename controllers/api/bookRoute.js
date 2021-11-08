@@ -1,34 +1,36 @@
 const Sequelize = require('sequelize');
-const { Book,Reader } = require('../../models');
+const { Book,Reader, LibraryCard } = require('../../models');
 const router = require('express').Router();
 const Op = Sequelize.Op
+const { withAuth, isAdmin } = require("../../utils/auth")
+
+router.put("/out", withAuth, isAdmin, async (req,res,next) => {
+
+    try{        
+        const checkOut = await Book.findOne({
+            where: {
+                id : req.body.book_id
+            }
+        })
+        const reader = await Reader.findOne({
+            include:{
+                model:LibraryCard,
+                where: {
+                    card_number:req.body.card
+                }
+            }
+        })
+
+        checkOut.reader_id = reader.id;
+        checkOut.save()     
 
 
-router.get('/search/:term', async (req, res) => {
-  const searchFields = req.params.term
-  req.session.logged_in = true
-  try{
-      const booksData = await Book.findAll({
-          where: { title: {[Op.like]: [`%${searchFields}%`]}},
-          logging: false
-      });
-
-      const books = booksData.map((book) => book.get({ plain: true }));
-
-      res.render('search', {books, logged_in: req.session.logged_in})
-  }   
-  catch{
-      console.log("error");
-  }
- });
-
-
-router.put("/out", (req,res) => {
-
-    
+    }
+    catch(err){
+        res.status(500).json({message:"Unable to find book"})
+    }
 
 })
-
 
 router.get('/:id', (req,res) => {
     Book.findOne({

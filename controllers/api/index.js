@@ -9,8 +9,7 @@ router.use('/readers', readerRoutes);
 router.use('/books', bookRoutes);
 router.use('/cards', LibrarycardRoutes);
 router.use('/events', eventsRoutes);
-router.use('/favorites', favorites)
-
+router.use('/favorites', favorites);
 
 
 module.exports = router;
