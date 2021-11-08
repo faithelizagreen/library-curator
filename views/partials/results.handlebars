@@ -3,32 +3,62 @@
       <h1>Search Results</h1>
     </div>
     <div class="overflow-auto m-4 d-flex flex-column align-items-center" style="max-height: 700px;">
-    {{#each books as |book| }}
-      <div class="card row m-4 w-75">
-        <div class="container d-flex mt-4" id="results">
-            <div class="row mb-4">
-              <h2>
-              {{book.title}}
-              </h2> 
-          </div>
-                <a class="btn justify-content-end" href="/api/favorites/add/{{book.id}}" type="button"><i class="favorite-btn fas fa-2x fa-heart"></i></a>
-              </div>
-          <h4>
-            Author: {{book.author}}
-        </h4>
-        <h6>
-          Subject: {{book.subject}}
-        </h6>
-        <div>
-        {{#if book.reader_id}}
-        <p class="badge bg-danger text-white">UNAVAILABLE.</p>
-        {{else}}
-        <p class="badge bg-success text-white">AVAILABLE</p>
-        {{/if}}
-      </div>
-    </div>
-    {{/each}}
-</div>
+
+      {{#if logged_in}}
+        {{#each books as |book| }}
+          <div class="card row m-4 w-75">
+            <div class="container d-flex mt-4" id="results">
+                  <div class="row mb-4">
+                      <h2>
+                      {{book.title}}
+                      </h2> 
+                  </div>
+                        <a class="btn justify-content-end" href="/api/favorites/add/{{book.id}}" type="button"><i class="favorite-btn fas fa-2x fa-heart"></i></a>
+            </div>
+            <h4>
+                Author: {{book.author}}
+            </h4>
+            <h6>
+              Subject: {{book.subject}}
+            </h6>
+            <div>
+              {{#if book.reader_id}}
+                <p class="badge bg-danger text-white">UNAVAILABLE.</p>
+              {{else}}
+                <p class="badge bg-success text-white">AVAILABLE</p>
+              {{/if}}
+            </div>
+        </div>
+        {{/each}}
+      {{else}}
+              {{#each books as |book| }}
+          <div class="card row m-4 w-75">
+            <div class="container d-flex mt-4" id="results">
+                  <div class="row mb-4">
+                      <h2>
+                      {{book.title}}
+                      </h2> 
+                  </div>
+            </div>
+            <h4>
+                Author: {{book.author}}
+            </h4>
+            <h6>
+              Subject: {{book.subject}}
+            </h6>
+            <div>
+              {{#if book.reader_id}}
+                <p class="badge bg-danger text-white">UNAVAILABLE.</p>
+              {{else}}
+                <p class="badge bg-success text-white">AVAILABLE</p>
+              {{/if}}
+            </div>
+        </div>
+        {{/each}}
+
+      {{/if}}
+
+  </div>
 </div>
 
 
