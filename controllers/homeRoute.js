@@ -9,7 +9,7 @@ const Op = Sequelize.Op
 router.get('/', async (req, res) => {
   try{
     const eventsData = await Events.findAll({
-        attributes:['id','title','created_at','description'],
+        attributes:['id','title','created_at', 'time', 'date','description'],
         limit:3,
         order:[['created_at','DESC']]
         

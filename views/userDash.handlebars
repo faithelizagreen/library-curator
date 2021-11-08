@@ -1,6 +1,6 @@
 
-    <div class="p-4 m-4 d-flex flex-wrap justify-content-around">
-        <div class="mx-3 mb-5 card flex-fill" style="min-width: 400px; max-width: 45%;">
+    <div class="p-4 m-4 d-flex flex-wrap justify-content-around" id="user-dash">
+        <div class="mx-3 mb-5 card flex-fill overflow-auto" style="min-width: 400px; max-width: 45%; max-height: 50%">
             <h3 class="card-header">My Checked Out Titles</h3>
             <div class="card-body">
                 {{#each checkedOutBooks as |checkedOutBook| }}
@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="mx-3 mb-5 card flex-fill" style="min-width: 400px; max-width: 45%;">
+        <div class="mx-3 mb-5 card flex-fill overflow-auto" style="min-width: 400px; max-width: 45%; max-height: 50%;">
             <h3 class="card-header">My Wishlist</h3>
             <div class="card-body">
                 {{#each favoriteBooks as |favoriteBook| }}
@@ -46,3 +46,5 @@
             </div>
         </div>
     </div> 
+
+    <script src="/javascript/member/removeFavorite.js"></script>

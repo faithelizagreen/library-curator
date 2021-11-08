@@ -1,6 +1,6 @@
 
 const Sequelize = require('sequelize');
-const { Book, Favorite, Events, Reader } = require('../models');
+const { Book, Favorite, Reader } = require('../models');
 
 const router = require('express').Router();
 const Op = Sequelize.Op
@@ -28,13 +28,13 @@ router.get("/", async (req, res) => {
               where: {
                 id: req.session.user_id
               },
-              through: Favorite
           },
-        ]        
+        
+        ]
     });
-
+console.log(favoriteBookData)
     const favoriteBooks = favoriteBookData.map((favoriteBook) => favoriteBook.get({ plain: true }));
-    console.log(favoriteBooks);
+    console.log(JSON.stringify(favoriteBooks));
   
     res.render("userDash", {
       checkedOutBooks, favoriteBooks,

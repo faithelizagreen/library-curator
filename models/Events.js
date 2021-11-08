@@ -27,9 +27,8 @@ Events.init({
   date: {
     type: DataTypes.STRING,
     allowNull: true,
-
+  }
   },
-},
 {
     sequelize,
     timestamps: true,

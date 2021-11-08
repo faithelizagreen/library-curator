@@ -26,6 +26,27 @@ router.get('/bookmanager', async (req, res) => {
 
     res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, bookmanager: true})
 
+    router.get('/search/:term', async (req, res, next) => {
+      const searchFields = req.params.term
+    
+      try{
+          const booksData = await Book.findAll({
+              where: { title: {[Op.like]: [`%${searchFields}%`]}},
+              logging: false
+          });
+          res.locals.books = booksData.map((book) => book.get({ plain: true }));
+          next();
+      }   
+      catch(err){
+          console.log("error");
+      }
+    },
+    function (req, res){
+      const books = res.locals.books
+      res.render('librarian', {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, modifybook:true})
+    }
+    );
+
 });
 
 router.get('/librarycard', async (req, res) => {
@@ -92,4 +113,16 @@ router.get('/books', async (req, res) => {
 
 });
 
-module.exports = router;
+
+router.get('/logout', (req, res) => {
+
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(200).end()
+    });
+  }else{
+    res.status(404).end()
+  }
+});
+
+module.exports = router
