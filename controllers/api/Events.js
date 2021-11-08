@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const multer = require('multer');
 const { Events } = require('../../models');
 const { isAdmin, withAuth } = require('../../utils/auth');
 

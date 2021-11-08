@@ -20,9 +20,11 @@ module.exports = {
    const button = `<a class="btn" href="/api/favorites/add/${id}" style="color: Green" role="button">X</a>`
 
     return new Handlebars.SafeString(button)
-  }
-};
+  },
+
   format_date: (date) => {
     
   }
-}
+
+};
+ 
