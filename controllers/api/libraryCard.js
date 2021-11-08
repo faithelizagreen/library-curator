@@ -28,21 +28,21 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// router.post('/', withAuth, isAdmin, async (req,res) => {
-//   await LibraryCard.create({
-//       card_number: req.body.card_number,
-//       id: req.body.id,
-//       reader_id: req.body.reader_id,
-//       include: {
-//         model: Reader,
-//         attributes: ['id', 'first_name', 'last_name', 'email'],
-//       },
-//     })
-//       .then((cardData) => res.json(cardData))
-//       .catch((err) => {
-//         res.status(500).json(err);
-//       });
-//   });
+router.post('/',  async (req,res) => {
+  await LibraryCard.create({
+      card_number: req.body.card_number,
+      id: req.body.id,
+      reader_id: req.body.reader_id,
+      include: {
+        model: Reader,
+        attributes: ['id', 'first_name', 'last_name', 'email'],
+      },
+    })
+      .then((cardData) => res.json(cardData))
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+  });
 
 router.post('/check', async (req, res) => {
   try{
