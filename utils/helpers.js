@@ -16,6 +16,8 @@ module.exports = {
     }
   },
 
+
+
   favorite_button: (id) => {
    const button = `<a class="btn" href="/api/favorites/add/${id}" style="color: Green" role="button">X</a>`
 

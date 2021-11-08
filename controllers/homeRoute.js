@@ -36,7 +36,7 @@ router.get('/search/:term', async (req, res, next) => {
       // const books = booksData.map((book) => book.get({ plain: true }));
       res.locals.books = booksData.map((book) => book.get({ plain: true }));
       next();
-      // res.render('search', {books, logged_in: req.session.logged_in})
+      res.render('search', {results , logged_in: req.session.logged_in, admin: req.session.isAdmin})
   }   
   catch(err){
       console.log(err);
