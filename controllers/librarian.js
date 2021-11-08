@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Events } = require('../models');
+const { Events, Reader, LibraryCard } = require('../models');
 const router = require('express').Router();
 
 
@@ -112,6 +112,39 @@ router.get('/books', async (req, res) => {
     res.render('librarian',  {logged_in: req.session.logged_in, isAdmin: req.session.isAdmin,books: true})
 
 });
+
+
+
+
+router.get('/members',async(req,res) => {
+  const readerData = await Reader.findAll({
+    attributes: ['first_name','last_name', 'email','id'],
+    include : {model:LibraryCard},
+    order:[['id','ASC']]
+})
+
+
+const reader = readerData.map((reader) => reader.get({ plain:true}));
+console.log(reader)
+
+
+res.render('librarian', {reader,logged_in: req.session.logged_in, isAdmin: req.session.isAdmin, libraryMembers: true})
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 router.get('/logout', (req, res) => {

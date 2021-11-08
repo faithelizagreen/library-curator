@@ -1,0 +1,88 @@
+{{!-- Initialize Modal Button --}}
+<div class="container d-flex justify-content-center">
+<button type='button' class="btn btn-dark w-75 mb-3 mt-2" data-toggle="modal" data-target="#addEvent">Add New Member</button>
+</div>
+
+<!-- add member MOdal -->
+<div class="container">
+  <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 100%;" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Member Info</h5>
+          <button type="button" class="close btn btn-dark" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="font-size: 20px;">&times;</span>
+          </button>
+        </div>
+        <form action="/api/readers/new" method="post" class="container row">
+            <div class="form-group col">
+              <label for="eventTitle" class="col-form-label">First Name:</label>
+              <input type="text" class="form-control" id="recip-name" name="first_name">
+            </div>
+            <div class="form-group col">
+              <label for="eventTime" class="col-form-label">Last Name:</label>
+              <input type="text" class="form-control" id="recipientame" name="last_name">
+            </div>
+            <div class="form-group col">
+              <label for="eventTime" class="col-form-label">Member's Email:</label>
+              <input type="text" class="form-control" id="recip" name="email">
+            </div>
+            <div class="form-group col">
+              <label for="eventTime" class="col-form-label">Member's Password:</label>
+              <input type="text" class="form-control" id="ree" name="password">
+            </div>
+             <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" value="submit" class="btn btn-dark">Confirm Member</button>
+        </div>
+        </div>
+
+          
+       
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Member ifno table -->
+
+<div class="container">
+<table class="table table-striped table-dark">
+   
+  <thead>
+    <tr>
+      <th scope="col">Member ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Card ID</th>
+      <th scope="col">Card Number</th>
+      <th scope="col">Remove Member</th>
+    
+      
+    </tr>
+    
+  </thead>
+   {{#each reader as |member|}}
+  <tbody>
+    <tr>
+      <th scope="row">{{id}}</th>
+      <td>{{first_name}}</td>
+      <td>{{last_name}}</td>
+      <td>{{email}}</td>
+      <td>{{library_card.id}}</td>
+      <td>{{library_card.card_number}}</td>
+      <td><button class="btn">❌</button></td>
+    </tr>
+  </tbody>
+  {{/each}}
+</table>
+
+
+</div>
+
+
