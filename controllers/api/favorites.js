@@ -61,6 +61,34 @@ router.get("/add/:id", withAuth, async (req,res) => {
     }
 })
 
+router.post("/check", withAuth, async (req,res) => {
+
+  const temp_user = req.session.user_id;
+  const temp_book = req.body.book_id;
+
+  try{
+    const fav = await Favorite.findOne({
+      where:{
+        reader_id:temp_user,
+        book_id: temp_book
+      }
+    })
+
+    if(fav){
+      res.status(200).json({"isFav": true})
+    }else{
+      res.status(500).json({"isFav": false})
+    }
+
+  }
+  catch(err){
+    res.status(500).json({"error":"bad request"})
+  }
+
+  
+
+})
+
 
 
 module.exports = router

@@ -1,25 +1,54 @@
 <div class="container" style="max-height: 60%;">
     <div class="d-flex overflow-auto flex-column align-items-center">
-      {{#each books as |book| }}
-      <div class="card p-4 m-4 w-75">
-          <div class="d-flex justify-content-between mb-4">
-              <h2>
-              {{book.title}}
-              </h2>
-              {{!-- {{favorite_button book.id}}  idea for later--}}
-              <a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>
-          </div>
-        <div class="col">
-          <h4>
-              Author: {{book.author}}
-          </h4>
-          {{#if book.reader_id}}
-          <p id="unavailable">Currently not available.</p>
-          {{else}}
-          <p id="available">Available to borrow.</p>
-          {{/if}}
-        </div>
-      </div>
-      {{/each}}
+
+      {{#if logged_in}}
+
+
+              {{#each books as |book| }}
+              <div class="card p-4 m-4 w-75">
+                  <div class="d-flex justify-content-between mb-4">
+                      <h2>
+                      {{book.title}}
+                      </h2>
+                      {{!-- {{favorite_button book.id}} --}}
+                      <a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>
+                  </div>
+                <div class="col">
+                  <h4>
+                      Author: {{book.author}}
+                  </h4>
+                  {{#if book.reader_id}}
+                  <p id="unavailable">Currently not available.</p>
+                  {{else}}
+                  <p id="available">Available to borrow.</p>
+                  {{/if}}
+                </div>
+              </div>
+              {{/each}}
+
+      {{else}}
+      
+              {{#each books as |book| }}
+              <div class="card p-4 m-4 w-75">
+                  <div class="d-flex justify-content-between mb-4">
+                      <h2>
+                      {{book.title}}
+                      </h2>
+                  </div>
+                <div class="col">
+                  <h4>
+                      Author: {{book.author}}
+                  </h4>
+                  {{#if book.reader_id}}
+                  <p id="unavailable">Currently not available.</p>
+                  {{else}}
+                  <p id="available">Available to borrow.</p>
+                  {{/if}}
+                </div>
+              </div>
+              {{/each}}
+
+      {{/if}}
+      
       </div>
 </div>
