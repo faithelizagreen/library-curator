@@ -1,5 +1,5 @@
 const { LibraryCard, Reader } = require('../../models');
-
+const { withAuth, isAdmin } = require('../../utils/auth');
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
@@ -27,6 +27,22 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// router.post('/', withAuth, isAdmin, async (req,res) => {
+//   await LibraryCard.create({
+//       card_number: req.body.card_number,
+//       id: req.body.id,
+//       reader_id: req.body.reader_id,
+//       include: {
+//         model: Reader,
+//         attributes: ['id', 'first_name', 'last_name', 'email'],
+//       },
+//     })
+//       .then((cardData) => res.json(cardData))
+//       .catch((err) => {
+//         res.status(500).json(err);
+//       });
+//   });
 
 router.post('/check', async (req, res) => {
   try{
