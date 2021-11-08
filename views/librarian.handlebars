@@ -34,6 +34,7 @@
           </a>
         </div>
         <div class="col-md-4 cms-boxes-outer">
+         <a class="custom-btn" href="/librarian/members">
           <div class="cms-boxes-items cms-scalability">
             <div class="boxes-align">
               <div class="small-box">
@@ -43,7 +44,8 @@
               </div>
             </div>
           </div>
-        </div>
+         </div>
+        </a>
       </div>
     </div>
   </section>
@@ -67,6 +69,9 @@
 {{> modifyevent}}
 {{/if}}
 
+{{#if libraryMembers}}
+{{>libraryMembers}}
+{{/if}}
 </div>
 
 

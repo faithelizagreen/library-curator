@@ -26,5 +26,12 @@
     "email": "library@mylibrary.com",
     "password": "adminpassword1!",
     "is_admin": true
+  },
+  {
+    "first_name": "Frank",
+    "last_name": "Guy",
+    "email": "afrankk20@aol.com",
+    "password": "amiko2k20!222321",
+    "is_admin": false
   }
 ]

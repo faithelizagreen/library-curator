@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { Reader, Book } = require("../../models")
+const { Reader, Book, LibraryCard } = require("../../models")
 const { withAuth, isAdmin } = require("../../utils/auth")
 
 
@@ -36,7 +36,11 @@ router.post('/new', withAuth, isAdmin,  (req,res) => {
         last_name: req.body.last_name,
         email : req.body.email,
         password: req.body.password,
-        is_admin: req.body.admin? true: false
+        is_admin: req.body.admin? true: false,
+        
+        include:[{model:LibraryCard},{attributes:['id']}]
+        
+        
     }).then((readerData) => res.json(readerData))       
      .catch((err) => {
         res.status(500).json(err)
