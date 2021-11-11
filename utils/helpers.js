@@ -29,8 +29,7 @@ module.exports = {
           headers: { 'Content-Type': 'application/json' },
       })
 
-      if(response.ok){
-        // <a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>  
+      if(response.ok){ 
         return ``    
       }else{
         return `<a class="btn" href="/api/favorites/add/{{book.id}}" id="favorite-btn" role="button"><i class="btn fas fa-2x fa-heart"></i></a>`

@@ -1,0 +1,37 @@
+
+  <nav class="nav p-3 justify-content-between">
+    <ul class="nav">
+      <a class="navbar-brand text-light" style="font-size:25px;" href="/">Library Curator</a>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Events</a>
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="/dashboard">Books</a>
+
+      </li>
+      {{#if logged_in}}
+      {{#if admin}}
+      <li class="nav-item">
+        <a class="nav-link" href="/librarian">Librarian Tools</a>
+      </li>
+      {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">My Account</a>
+      </li>
+      {{/if}}
+      <li class="nav-item" id="logout">
+        <p class="nav-link">Logout</p>
+      </li>
+      {{/if}}
+    </ul>
+    </div>
+    {{#unless logged_in}}
+    <div class="row">
+      <div>{{>login}}</div>
+    </div>
+    {{/unless}}
+  </nav>

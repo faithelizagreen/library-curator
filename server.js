@@ -7,10 +7,13 @@ const helpers = require('./utils/helpers')
 //-------------------------
 // Router path file
 //-------------------------
+
 const routes = require('./controllers')
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+
+
 //------------------------------------
 // Handlebars path to the views files.
 //------------------------------------
@@ -23,13 +26,10 @@ const hbs = exphbs.create({
   helpers
 });
 
-
-
-
-
 //==============================================
 //express-session configs for user on connection
 //==============================================
+
 const session = require('express-session');
 
 
@@ -63,6 +63,7 @@ app.use(function(req, res, next){
 //--------------------------
 // Express middleware
 //--------------------------
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -71,6 +72,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //----------------------------------------------
 // Call handlebars to be used as the view engine
 //----------------------------------------------
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -78,6 +80,7 @@ app.use(routes);
 //-----------------------------------------------------------------------------
 // Turns PORT into a server and syncs Database specified from .env file.
 //-----------------------------------------------------------------------------
+
 sequelize.sync({ force: false, logging: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}`));
   });

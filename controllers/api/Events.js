@@ -24,9 +24,6 @@ router.get('/', async (req,res) => {
   })
 
 
-
-
-
 router.post('/',isAdmin, withAuth, async (req, res) => {
   
   console.log(req.file)
@@ -73,7 +70,22 @@ router.delete('/:id', isAdmin, withAuth, (req, res) => {
 // Update event info referenced by id|-=/\\//\/\|=
 //===================================|-=/\\/\/\/|=
    
-
+router.put('/:id', async (req, res) => {
+  
+  try {
+    const eventData = await Events.update(req.body, {
+      where: {id: req.params.id}
+    });
+    if(!eventData) {
+      res.status(404).json({ message: 'No category found with this id!' });
+      return;
+    } else {
+      res.status(200).json(eventData);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  });
 
 
 
